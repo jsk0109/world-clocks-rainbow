@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Clocks by Continent</title>
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6076627813468062"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7076672813468062" crossorigin="anonymous"></script>
     <style>
+        /* 기존 스타일 유지 */
         #filter-buttons {
             text-align: center;
             margin-bottom: 20px;
@@ -115,6 +116,61 @@
                 transform: scale(1.3);
             }
         }
+
+        /* Q&A 아코디언 스타일 */
+        .faq-section {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .faq-section h2 {
+            color: #1e90ff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .accordion {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background: #f7f7f7;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        .accordion-header:hover {
+            background: #e0e0e0;
+        }
+        .accordion-header::after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: #fff;
+        }
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -131,6 +187,72 @@
     </nav>
     <div id="filter-buttons"></div>
     <div id="clocks-container"></div>
+
+    <!-- Q&A 아코디언 섹션 추가 -->
+    <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="accordion">
+        <div class="accordion-header">How accurate are the times shown?</div>
+        <div class="accordion-content">
+            <p>The times displayed are based on your device's local time, adjusted for the respective time zones using standard UTC offsets. They are accurate to within a few seconds, but slight variations may occur due to network latency or device clock discrepancies.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">Does the site account for Daylight Saving Time (DST)?</div>
+        <div class="accordion-content">
+            <p>Currently, the site uses standard time zone offsets and does not automatically adjust for Daylight Saving Time (DST). For cities that observe DST, you may need to manually account for the time difference during those periods.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">How is the weather information obtained?</div>
+        <div class="accordion-content">
+            <p>Weather data is sourced from the Open-Meteo API, which provides current weather conditions and forecasts based on the city's coordinates. The data is cached for 10 minutes to reduce API calls, so it may not reflect real-time changes.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">Can I add more cities to the list?</div>
+        <div class="accordion-content">
+            <p>The list of cities is predefined in the code. To add more cities, you would need to modify the JavaScript array in the source code with the city's name, coordinates, time zone offset, and flag code, then redeploy the site.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">Why do some cities show "Weather: N/A"?</div>
+        <div class="accordion-content">
+            <p>If the weather data cannot be retrieved due to API errors or rate limits, the site will display "Weather: N/A". This can happen if the API is temporarily unavailable or if there are network issues. The site uses cached data as a fallback when possible.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">How often is the weather updated?</div>
+        <div class="accordion-content">
+            <p>Weather data is updated every 10 minutes to balance accuracy and API usage. If you need more frequent updates, you can refresh the page, but the cache will still apply unless the 10-minute window has passed.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">Can I change the temperature unit to Fahrenheit?</div>
+        <div class="accordion-content">
+            <p>Currently, the site displays temperatures in Celsius only. Adding a feature to toggle between Celsius and Fahrenheit is a great idea for future updates, but it's not available at the moment.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">Why does the clock flicker every second?</div>
+        <div class="accordion-content">
+            <p>The clock updates every second to ensure accuracy, which may cause a slight flicker as the DOM is updated. This is normal behavior for real-time clocks, but we are working on optimizing the rendering to reduce flickering in future updates.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">Is there a mobile app for World Clocks?</div>
+        <div class="accordion-content">
+            <p>Currently, World Clocks is only available as a web application. We are considering developing a mobile app in the future to provide a more seamless experience on mobile devices.</p>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-header">How can I contact the team for support?</div>
+        <div class="accordion-content">
+            <p>You can reach out to us via the Contact Us page. We typically respond within 24-48 hours. For urgent issues, please include as much detail as possible in your message.</p>
+        </div>
+    </div>
+</div>
+
     <script>
         const cities = [
             { name: "New York", lat: 40.7128, lon: -74.0060, offset: -5, flag: "us", continent: "North America" },
@@ -195,7 +317,7 @@
                 return cachedData.data;
             }
 
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true&hourly=relativehumidity_2m&timezone=auto`;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}¤t_weather=true&hourly=relativehumidity_2m&timezone=auto`;
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(url);
@@ -375,6 +497,30 @@
 
         window.addEventListener("resize", setTransformOrigin);
         setTransformOrigin();
+
+        // 아코디언 동작 스크립트
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isOpen = content.style.maxHeight;
+
+                // 모든 아코디언 닫기
+                document.querySelectorAll('.accordion-content').forEach(item => {
+                    item.style.maxHeight = null;
+                    item.style.padding = '0 15px';
+                    item.previousElementSibling.classList.remove('active');
+                });
+
+                // 클릭한 아코디언 열기/닫기
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.padding = '15px 15px';
+                    header.classList.add('active');
+                }
+            });
+        });
     </script>
+</body>
+</html>
 </body>
 </html>

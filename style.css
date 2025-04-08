@@ -1,3 +1,7 @@
+/* 스크롤바 유무와 상관없이 페이지 너비 고정 */
+html, body {
+    overflow-y: scroll; /* 항상 스크롤바 표시 */
+}
 /* 공통 네비게이션 스타일 */
 nav {
     background: #000;

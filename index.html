@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World Clocks by Continent</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #filter-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .filter-btn[data-continent=""] { background: #000; color: white; }
+        .filter-btn[data-continent="Asia"] { background: #ff69b4; color: white; }
+        .filter-btn[data-continent="Europe"] { background: #1e90ff; color: white; }
+        .filter-btn[data-continent="North America"] { background: #ffd700; color: #333; }
+        .filter-btn[data-continent="South America"] { background: #32cd32; color: white; }
+        .filter-btn[data-continent="Africa"] { background: #ff4500; color: white; }
+        .filter-btn[data-continent="Oceania"] { background: #00ced1; color: white; }
+        .filter-btn.active { opacity: 1; }
+        .filter-btn:not(.active) { opacity: 0.6; }
+        .filter-btn:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+        #clocks-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .clock-container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.5s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+        .clock-container:hover {
+            transform: scale(1.5);
+            z-index: 10;
+        }
+        .clock-container[data-continent="Asia"] .digital-clock { border-color: #ff69b4; }
+        .clock-container[data-continent="Europe"] .digital-clock { border-color: #1e90ff; }
+        .clock-container[data-continent="North America"] .digital-clock { border-color: #ffd700; }
+        .clock-container[data-continent="South America"] .digital-clock { border-color: #32cd32; }
+        .clock-container[data-continent="Africa"] .digital-clock { border-color: #ff4500; }
+        .clock-container[data-continent="Oceania"] .digital-clock { border-color: #00ced1; }
+        .city-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .flag-img {
+            width: 24px;
+            height: 18px;
+            margin-bottom: 5px;
+        }
+        .city-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        .digital-clock {
+            width: 100px;
+            height: 50px;
+            border: 4px solid;
+            border-radius: 10px;
+            background: #E6F0FA;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2), 0 0 5px rgba(255,255,255,0.5);
+        }
+        .digital-clock .seconds {
+            font-size: 14px;
+            vertical-align: super;
+            color: #1E90FF;
+        }
+        .weather-info {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+        .weather-info span.weather-icon { font-size: 14px; margin-right: 2px; }
+        .weather-info span.temperature { color: #e63946; font-weight: bold; }
+        .weather-info span.humidity { color: #1e90ff; }
+        @media (max-width: 600px) {
+            #clocks-container { grid-template-columns: repeat(2, 1fr); }
+            .digital-clock { width: 120px; height: 60px; font-size: 24px; }
+            .digital-clock .seconds { font-size: 16px; }
+            .flag-img { width: 28px; height: 21px; }
+            .city-name { font-size: 18px; }
+            .clock-container:hover {
+                transform: scale(1.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="converter.html">Time Zone Converter</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </nav>
+    <div id="filter-buttons"></div>
+    <div id="clocks-container"></div>
+    <script>
+        const cities = [
+            { name: "New York", lat: 40.7128, lon: -74.0060, offset: -5, flag: "us", continent: "North America" },
+            { name: "London", lat: 51.5074, lon: -0.1278, offset: 0, flag: "gb", continent: "Europe" },
+            { name: "Tokyo", lat: 35.6762, lon: 139.6503, offset: 9, flag: "jp", continent: "Asia" },
+            { name: "Paris", lat: 48.8566, lon: 2.3522, offset: 1, flag: "fr", continent: "Europe" },
+            { name: "Los Angeles", lat: 34.0522, lon: -118.2437, offset: -8, flag: "us", continent: "North America" },
+            { name: "Berlin", lat: 52.5200, lon: 13.4050, offset: 1, flag: "de", continent: "Europe" },
+            { name: "Seoul", lat: 37.5665, lon: 126.9780, offset: 9, flag: "kr", continent: "Asia" },
+            { name: "Madrid", lat: 40.4168, lon: -3.7038, offset: 1, flag: "es", continent: "Europe" },
+            { name: "Beijing", lat: 39.9042, lon: 116.4074, offset: 8, flag: "cn", continent: "Asia" },
+            { name: "Rome", lat: 41.9028, lon: 12.4964, offset: 1, flag: "it", continent: "Europe" },
+            { name: "Chicago", lat: 41.8781, lon: -87.6298, offset: -6, flag: "us", continent: "North America" },
+            { name: "Amsterdam", lat: 52.3676, lon: 4.9041, offset: 1, flag: "nl", continent: "Europe" },
+            { name: "Shanghai", lat: 31.2304, lon: 121.4737, offset: 8, flag: "cn", continent: "Asia" },
+            { name: "Vienna", lat: 48.2082, lon: 16.3738, offset: 1, flag: "at", continent: "Europe" },
+            { name: "Hong Kong", lat: 22.3193, lon: 114.1694, offset: 8, flag: "hk", continent: "Asia" },
+            { name: "Houston", lat: 29.7604, lon: -95.3698, offset: -6, flag: "us", continent: "North America" },
+            { name: "Stockholm", lat: 59.3293, lon: 18.0686, offset: 1, flag: "se", continent: "Europe" },
+            { name: "Singapore", lat: 1.3521, lon: 103.8198, offset: 8, flag: "sg", continent: "Asia" },
+            { name: "Moscow", lat: 55.7558, lon: 37.6173, offset: 3, flag: "ru", continent: "Europe" },
+            { name: "Toronto", lat: 43.6532, lon: -79.3832, offset: -5, flag: "ca", continent: "North America" },
+            { name: "Bangkok", lat: 13.7563, lon: 100.5018, offset: 7, flag: "th", continent: "Asia" },
+            { name: "Athens", lat: 37.9838, lon: 23.7275, offset: 2, flag: "gr", continent: "Europe" },
+            { name: "Vancouver", lat: 49.2827, lon: -123.1207, offset: -8, flag: "ca", continent: "North America" },
+            { name: "Kuala Lumpur", lat: 3.1390, lon: 101.6869, offset: 8, flag: "my", continent: "Asia" },
+            { name: "São Paulo", lat: -23.5505, lon: -46.6333, offset: -3, flag: "br", continent: "South America" },
+            { name: "Jakarta", lat: -6.2088, lon: 106.8456, offset: 7, flag: "id", continent: "Asia" },
+            { name: "Mexico City", lat: 19.4326, lon: -99.1332, offset: -6, flag: "mx", continent: "North America" },
+            { name: "New Delhi", lat: 28.6139, lon: 77.2090, offset: 5.5, flag: "in", continent: "Asia" },
+            { name: "Buenos Aires", lat: -34.6037, lon: -58.3816, offset: -3, flag: "ar", continent: "South America" },
+            { name: "Miami", lat: 25.7617, lon: -80.1918, offset: -5, flag: "us", continent: "North America" },
+            { name: "Mumbai", lat: 19.0760, lon: 72.8777, offset: 5.5, flag: "in", continent: "Asia" },
+            { name: "Rio de Janeiro", lat: -22.9068, lon: -43.1729, offset: -3, flag: "br", continent: "South America" },
+            { name: "San Francisco", lat: 37.7749, lon: -122.4194, offset: -8, flag: "us", continent: "North America" },
+            { name: "Dubai", lat: 25.2048, lon: 55.2708, offset: 4, flag: "ae", continent: "Asia" },
+            { name: "Lima", lat: -12.0464, lon: -77.0428, offset: -5, flag: "pe", continent: "South America" },
+            { name: "Washington D.C.", lat: 38.9072, lon: -77.0369, offset: -5, flag: "us", continent: "North America" },
+            { name: "Riyadh", lat: 24.7136, lon: 46.6753, offset: 3, flag: "sa", continent: "Asia" },
+            { name: "Bogotá", lat: 4.7110, lon: -74.0721, offset: -5, flag: "co", continent: "South America" },
+            { name: "Tehran", lat: 35.6892, lon: 51.3890, offset: 3.5, flag: "ir", continent: "Asia" },
+            { name: "Cairo", lat: 30.0444, lon: 31.2357, offset: 2, flag: "eg", continent: "Africa" },
+            { name: "Manila", lat: 14.5995, lon: 120.9842, offset: 8, flag: "ph", continent: "Asia" },
+            { name: "Lagos", lat: 6.5244, lon: 3.3792, offset: 1, flag: "ng", continent: "Africa" },
+            { name: "Sydney", lat: -33.8688, lon: 151.2093, offset: 10, flag: "au", continent: "Oceania" },
+            { name: "Nairobi", lat: -1.2921, lon: 36.8219, offset: 3, flag: "ke", continent: "Africa" },
+            { name: "Melbourne", lat: -37.8136, lon: 144.9631, offset: 10, flag: "au", continent: "Oceania" },
+            { name: "Johannesburg", lat: -26.2041, lon: 28.0473, offset: 2, flag: "za", continent: "Africa" },
+            { name: "Auckland", lat: -36.8485, lon: 174.7633, offset: 12, flag: "nz", continent: "Oceania" },
+            { name: "Cape Town", lat: -33.9249, lon: 18.4241, offset: 2, flag: "za", continent: "Africa" },
+            { name: "Brisbane", lat: -27.4698, lon: 153.0251, offset: 10, flag: "au", continent: "Oceania" },
+            { name: "Perth", lat: -31.9505, lon: 115.8605, offset: 8, flag: "au", continent: "Oceania" },
+        ];
+
+        let weatherData = {};
+        const CACHE_DURATION = 10 * 60 * 1000;
+
+        async function fetchWeather(city, retries = 3) {
+            const cached = localStorage.getItem(`weather_${city.name}`);
+            let cachedData = cached ? JSON.parse(cached) : null;
+            if (cachedData && Date.now() - cachedData.timestamp < CACHE_DURATION) {
+                return cachedData.data;
+            }
+
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true&hourly=relativehumidity_2m&timezone=auto`;
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const data = await response.json();
+                    const weatherCode = data.current_weather.weathercode;
+                    const weatherIcon = getWeatherIcon(weatherCode);
+                    const weather = {
+                        temperature: data.current_weather.temperature,
+                        humidity: data.hourly.relativehumidity_2m[0],
+                        weatherIcon: weatherIcon
+                    };
+                    localStorage.setItem(`weather_${city.name}`, JSON.stringify({
+                        data: weather,
+                        timestamp: Date.now()
+                    }));
+                    return weather;
+                } catch (error) {
+                    console.error(`Attempt ${i + 1} failed for ${city.name}: ${error.message}, URL: ${url}`);
+                    if (i === retries - 1) {
+                        if (cachedData) {
+                            console.warn(`Using expired cache for ${city.name}`);
+                            return cachedData.data;
+                        }
+                        return { temperature: "N/A", humidity: "N/A", weatherIcon: "❓" };
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+            }
+        }
+
+        function getWeatherIcon(code) {
+            if (code === 0) return "☀️";
+            if (code <= 3) return "⛅";
+            if (code <= 67) return "🌧️";
+            if (code <= 77) return "❄️";
+            return "🌩️";
+        }
+
+        function createClock(city) {
+            const container = document.getElementById("clocks-container");
+            const clockDiv = document.createElement("div");
+            clockDiv.className = "clock-container";
+            clockDiv.dataset.continent = city.continent;
+            clockDiv.innerHTML = `
+                <div class="city-header">
+                    <img class="flag-img" src="https://flagcdn.com/24x18/${city.flag}.png" alt="${city.flag}">
+                    <div class="city-name">${city.name}</div>
+                </div>
+                <div class="digital-clock"></div>
+                <div class="weather-info">Weather: Loading...</div>
+            `;
+            container.appendChild(clockDiv);
+            return clockDiv;
+        }
+
+        function createFilterButtons() {
+            const continents = ["All", "Asia", "Europe", "North America", "South America", "Africa", "Oceania"];
+            const container = document.getElementById("filter-buttons");
+            continents.forEach(continent => {
+                const btn = document.createElement("button");
+                btn.className = "filter-btn";
+                btn.textContent = continent;
+                btn.dataset.continent = continent === "All" ? "" : continent;
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    filterClocks(continent);
+                    setTransformOrigin();
+                });
+                container.appendChild(btn);
+            });
+            document.querySelector(".filter-btn").classList.add("active");
+        }
+
+        function filterClocks(continent) {
+            const clocks = document.querySelectorAll(".clock-container");
+            clocks.forEach(clock => {
+                if (continent === "All") {
+                    clock.style.display = "block";
+                } else {
+                    clock.style.display = clock.dataset.continent === continent ? "block" : "none";
+                }
+            });
+        }
+
+        function updateClock(clock, offset, weather) {
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const localTime = new Date(utc + (3600000 * offset));
+
+            const hours = localTime.getHours();
+            const minutes = localTime.getMinutes();
+            const seconds = localTime.getSeconds();
+
+            const displayHours = hours < 10 ? `0${hours}` : hours;
+            const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+            const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+            clock.querySelector(".digital-clock").innerHTML = `${displayHours}:${displayMinutes}:<span class="seconds">${displaySeconds}</span>`;
+
+            clock.querySelector(".weather-info").innerHTML = weather.temperature !== "N/A" ?
+                `Weather: <span class="weather-icon">${weather.weatherIcon}</span> <span class="temperature">${weather.temperature}°C</span>, Humidity: <span class="humidity">${weather.humidity}%</span>` : "Weather: N/A";
+        }
+
+        async function initializeWeather() {
+            const promises = cities.map(city => fetchWeather(city));
+            const results = await Promise.all(promises);
+            cities.forEach((city, index) => {
+                weatherData[city.name] = results[index];
+            });
+        }
+
+        async function updateWeather() {
+            const promises = cities.map(city => fetchWeather(city));
+            const results = await Promise.all(promises);
+            cities.forEach((city, index) => {
+                weatherData[city.name] = results[index];
+            });
+        }
+
+        function updateAll() {
+            clocks.forEach(({ clock, city }) => {
+                updateClock(clock, city.offset, weatherData[city.name] || { temperature: "N/A", humidity: "N/A", weatherIcon: "❓" });
+            });
+        }
+
+        function setTransformOrigin() {
+            const clocks = document.querySelectorAll(".clock-container");
+            const visibleClocks = Array.from(clocks).filter(clock => clock.style.display !== "none");
+
+            visibleClocks.forEach((clock, visibleIndex) => {
+                const rect = clock.getBoundingClientRect();
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+
+                let originX = "center";
+                let originY = "center";
+
+                const row = Math.floor(visibleIndex / 5) + 1;
+                const col = (visibleIndex % 5) + 1;
+
+                const isEdge = row === 1 || row === Math.ceil(visibleClocks.length / 5) || col === 1 || col === 5;
+
+                if (!isEdge) {
+                    clock.style.transformOrigin = "center center";
+                } else {
+                    if (rect.left < windowWidth * 0.15) {
+                        originX = "left";
+                    } else if (rect.right > windowWidth * 0.85) {
+                        originX = "right";
+                    }
+
+                    if (rect.top < windowHeight * 0.15) {
+                        originY = "top";
+                    } else if (rect.bottom > windowHeight * 0.85) {
+                        originY = "bottom";
+                    }
+
+                    clock.style.transformOrigin = `${originY} ${originX}`;
+                }
+            });
+        }
+
+        const clocks = cities.map(city => ({ clock: createClock(city), city }));
+
+        createFilterButtons();
+
+        updateAll();
+        setInterval(updateAll, 1000);
+
+        initializeWeather().then(() => {
+            updateAll();
+            setInterval(updateWeather, 10 * 60 * 1000);
+        }).catch(error => {
+            console.error("Failed to initialize weather:", error);
+        });
+
+        window.addEventListener("resize", setTransformOrigin);
+        setTransformOrigin();
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Zone Converter - World Clocks</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+        select, input[type="datetime-local"], button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #1e90ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #ff4500;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="converter.html">Time Zone Converter</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h1>Time Zone Converter</h1>
+        <p>Convert time between two cities easily. Select the cities and the date/time to see the corresponding time in the other city.</p>
+        <label for="city1">From City:</label>
+        <select id="city1"></select>
+        <label for="datetime">Date and Time:</label>
+        <input type="datetime-local" id="datetime">
+        <label for="city2">To City:</label>
+        <select id="city2"></select>
+        <button onclick="convertTime()">Convert</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        const cities = [
+            { name: "New York", offset: -5 },
+            { name: "London", offset: 0 },
+            { name: "Tokyo", offset: 9 },
+            { name: "Paris", offset: 1 },
+            { name: "Los Angeles", offset: -8 },
+            { name: "Berlin", offset: 1 },
+            { name: "Seoul", offset: 9 },
+            { name: "Madrid", offset: 1 },
+            { name: "Beijing", offset: 8 },
+            { name: "Rome", offset: 1 },
+            { name: "Chicago", offset: -6 },
+            { name: "Amsterdam", offset: 1 },
+            { name: "Shanghai", offset: 8 },
+            { name: "Vienna", offset: 1 },
+            { name: "Hong Kong", offset: 8 },
+            { name: "Houston", offset: -6 },
+            { name: "Stockholm", offset: 1 },
+            { name: "Singapore", offset: 8 },
+            { name: "Moscow", offset: 3 },
+            { name: "Toronto", offset: -5 },
+            { name: "Bangkok", offset: 7 },
+            { name: "Athens", offset: 2 },
+            { name: "Vancouver", offset: -8 },
+            { name: "Kuala Lumpur", offset: 8 },
+            { name: "São Paulo", offset: -3 },
+            { name: "Jakarta", offset: 7 },
+            { name: "Mexico City", offset: -6 },
+            { name: "New Delhi", offset: 5.5 },
+            { name: "Buenos Aires", offset: -3 },
+            { name: "Miami", offset: -5 },
+            { name: "Mumbai", offset: 5.5 },
+            { name: "Rio de Janeiro", offset: -3 },
+            { name: "San Francisco", offset: -8 },
+            { name: "Dubai", offset: 4 },
+            { name: "Lima", offset: -5 },
+            { name: "Washington D.C.", offset: -5 },
+            { name: "Riyadh", offset: 3 },
+            { name: "Bogotá", offset: -5 },
+            { name: "Tehran", offset: 3.5 },
+            { name: "Cairo", offset: 2 },
+            { name: "Manila", offset: 8 },
+            { name: "Lagos", offset: 1 },
+            { name: "Sydney", offset: 10 },
+            { name: "Nairobi", offset: 3 },
+            { name: "Melbourne", offset: 10 },
+            { name: "Johannesburg", offset: 2 },
+            { name: "Auckland", offset: 12 },
+            { name: "Cape Town", offset: 2 },
+            { name: "Brisbane", offset: 10 },
+            { name: "Perth", offset: 8 },
+        ];
+
+        const city1Select = document.getElementById("city1");
+        const city2Select = document.getElementById("city2");
+
+        cities.forEach(city => {
+            const option1 = document.createElement("option");
+            option1.value = city.name;
+            option1.textContent = city.name;
+            city1Select.appendChild(option1);
+
+            const option2 = document.createElement("option");
+            option2.value = city.name;
+            option2.textContent = city.name;
+            city2Select.appendChild(option2);
+        });
+
+        function convertTime() {
+            const city1 = city1Select.value;
+            const city2 = city2Select.value;
+            const datetime = new Date(document.getElementById("datetime").value);
+
+            if (!city1 || !city2 || isNaN(datetime)) {
+                document.getElementById("result").innerHTML = "Please select both cities and a valid date/time.";
+                return;
+            }
+
+            const offset1 = cities.find(city => city.name === city1).offset;
+            const offset2 = cities.find(city => city.name === city2).offset;
+
+            const utcTime = datetime.getTime() + (datetime.getTimezoneOffset() * 60000);
+            const localTime1 = utcTime + (offset1 * 3600000);
+            const localTime2 = utcTime + (offset2 * 3600000);
+
+            const resultTime1 = new Date(localTime1);
+            const resultTime2 = new Date(localTime2);
+
+            document.getElementById("result").innerHTML = `
+                <strong>${city1}:</strong> ${resultTime1.toLocaleString()}<br>
+                <strong>${city2}:</strong> ${resultTime2.toLocaleString()}
+            `;
+        }
+    </script>
+</body>
+</html>

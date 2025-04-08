@@ -7,7 +7,7 @@
     <style>
         nav {
             background: #000;
-            padding: 0;
+            padding: 10px 0;
             height: auto;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             position: sticky;
@@ -18,7 +18,7 @@
         nav ul {
             list-style: none;
             margin: 0;
-            padding: 10px 0;
+            padding: 0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -32,6 +32,7 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: 500;
+            font-family: 'Arial', sans-serif;
             line-height: 30px;
             transition: color 0.3s ease;
         }
@@ -41,27 +42,28 @@
 
         #filter-buttons {
             text-align: center;
-            margin-bottom: 60px;
+            margin: 40px 0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
         }
         .filter-btn {
-            padding: 10px 20px;
+            padding: 12px 24px;
             margin: 5px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 500;
+            font-family: 'Arial', sans-serif;
             transition: all 0.3s ease;
         }
         .filter-btn[data-continent=""] { background: #D32F2F; color: white; } /* ALL - 빨강 */
         .filter-btn[data-continent="Asia"] { background: #F57C00; color: white; } /* Asia - 주황 */
         .filter-btn[data-continent="Europe"] { background: #FBC02D; color: white; } /* Europe - 노랑 */
-        .filter-btn[data-continent="N America"] { background: #388E3C; color: white; } /* North America - 초록 */
-        .filter-btn[data-continent="S America"] { background: #1976D2; color: white; } /* South America - 파랑 */
+        .filter-btn[data-continent="North America"] { background: #388E3C; color: white; } /* North America - 초록 */
+        .filter-btn[data-continent="South America"] { background: #1976D2; color: white; } /* South America - 파랑 */
         .filter-btn[data-continent="Africa"] { background: #303F9F; color: white; } /* Africa - 남색 */
         .filter-btn[data-continent="Oceania"] { background: #7B1FA2; color: white; } /* Oceania - 보라 */
         .filter-btn.active { opacity: 1; }
@@ -112,6 +114,7 @@
         .city-name {
             font-size: 16px;
             font-weight: bold;
+            font-family: 'Arial', sans-serif;
             color: #333;
         }
         .digital-clock {
@@ -137,6 +140,8 @@
         }
         .weather-info {
             font-size: 12px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 400;
             color: #888;
             margin-top: 5px;
         }
@@ -188,6 +193,7 @@
             text-align: center;
             margin-bottom: 20px;
             font-weight: 600;
+            font-family: 'Arial', sans-serif;
         }
         .accordion {
             border: 1px solid #ddd;
@@ -200,6 +206,7 @@
             padding: 15px;
             cursor: pointer;
             font-weight: 500;
+            font-family: 'Arial', sans-serif;
             color: #333;
             display: flex;
             justify-content: space-between;
@@ -228,6 +235,7 @@
             padding: 15px 0;
             margin: 0;
             color: #666;
+            font-family: 'Arial', sans-serif;
             font-weight: 400;
         }
     </style>
@@ -293,15 +301,15 @@
     </div>
     <script>
         const cities = [
-            { name: "New York", lat: 40.7128, lon: -74.0060, offset: -5, flag: "us", continent: "North America" },
-            { name: "London", lat: 51.5074, lon: -0.1278, offset: 0, flag: "gb", continent: "Europe" },
+            { name: "New York", lat: 40.7128, lon: -74.0060, offset: -4, flag: "us", continent: "North America" },
+            { name: "London", lat: 51.5074, lon: -0.1278, offset: 1, flag: "gb", continent: "Europe" },
             { name: "Tokyo", lat: 35.6762, lon: 139.6503, offset: 9, flag: "jp", continent: "Asia" },
-            { name: "Paris", lat: 48.8566, lon: 2.3522, offset: 1, flag: "fr", continent: "Europe" },
-            { name: "Los Angeles", lat: 34.0522, lon: -118.2437, offset: -8, flag: "us", continent: "North America" },
+            { name: "Paris", lat: 48.8566, lon: 2.3522, offset: 2, flag: "fr", continent: "Europe" },
+            { name: "Los Angeles", lat: 34.0522, lon: -118.2437, offset: -7, flag: "us", continent: "North America" },
             { name: "Sydney", lat: -33.8688, lon: 151.2093, offset: 10, flag: "au", continent: "Oceania" },
             { name: "Seoul", lat: 37.5665, lon: 126.9780, offset: 9, flag: "kr", continent: "Asia" },
-            { name: "Berlin", lat: 52.5200, lon: 13.4050, offset: 1, flag: "de", continent: "Europe" },
-            { name: "Toronto", lat: 43.6532, lon: -79.3832, offset: -5, flag: "ca", continent: "North America" },
+            { name: "Berlin", lat: 52.5200, lon: 13.4050, offset: 2, flag: "de", continent: "Europe" },
+            { name: "Toronto", lat: 43.6532, lon: -79.3832, offset: -4, flag: "ca", continent: "North America" },
             { name: "Moscow", lat: 55.7558, lon: 37.6173, offset: 3, flag: "ru", continent: "Europe" },
             { name: "Beijing", lat: 39.9042, lon: 116.4074, offset: 8, flag: "cn", continent: "Asia" },
             { name: "Dubai", lat: 25.2048, lon: 55.2708, offset: 4, flag: "ae", continent: "Asia" },
@@ -314,18 +322,18 @@
             { name: "Manila", lat: 14.5995, lon: 120.9842, offset: 8, flag: "ph", continent: "Asia" },
             { name: "Kuala Lumpur", lat: 3.1390, lon: 101.6869, offset: 8, flag: "my", continent: "Asia" },
             { name: "Istanbul", lat: 41.0082, lon: 28.9784, offset: 3, flag: "tr", continent: "Europe" },
-            { name: "Madrid", lat: 40.4168, lon: -3.7038, offset: 1, flag: "es", continent: "Europe" },
-            { name: "Rome", lat: 41.9028, lon: 12.4964, offset: 1, flag: "it", continent: "Europe" },
-            { name: "Amsterdam", lat: 52.3676, lon: 4.9041, offset: 1, flag: "nl", continent: "Europe" },
-            { name: "Vienna", lat: 48.2082, lon: 16.3738, offset: 1, flag: "at", continent: "Europe" },
-            { name: "Stockholm", lat: 59.3293, lon: 18.0686, offset: 1, flag: "se", continent: "Europe" },
-            { name: "Oslo", lat: 59.9139, lon: 10.7522, offset: 1, flag: "no", continent: "Europe" },
-            { name: "Helsinki", lat: 60.1699, lon: 24.9384, offset: 2, flag: "fi", continent: "Europe" },
-            { name: "Copenhagen", lat: 55.6761, lon: 12.5683, offset: 1, flag: "dk", continent: "Europe" },
-            { name: "Chicago", lat: 41.8781, lon: -87.6298, offset: -6, flag: "us", continent: "North America" },
-            { name: "Miami", lat: 25.7617, lon: -80.1918, offset: -5, flag: "us", continent: "North America" },
-            { name: "Vancouver", lat: 49.2827, lon: -123.1207, offset: -8, flag: "ca", continent: "North America" },
-            { name: "Mexico City", lat: 19.4326, lon: -99.1332, offset: -6, flag: "mx", continent: "North America" },
+            { name: "Madrid", lat: 40.4168, lon: -3.7038, offset: 2, flag: "es", continent: "Europe" },
+            { name: "Rome", lat: 41.9028, lon: 12.4964, offset: 2, flag: "it", continent: "Europe" },
+            { name: "Amsterdam", lat: 52.3676, lon: 4.9041, offset: 2, flag: "nl", continent: "Europe" },
+            { name: "Vienna", lat: 48.2082, lon: 16.3738, offset: 2, flag: "at", continent: "Europe" },
+            { name: "Stockholm", lat: 59.3293, lon: 18.0686, offset: 2, flag: "se", continent: "Europe" },
+            { name: "Oslo", lat: 59.9139, lon: 10.7522, offset: 2, flag: "no", continent: "Europe" },
+            { name: "Helsinki", lat: 60.1699, lon: 24.9384, offset: 3, flag: "fi", continent: "Europe" },
+            { name: "Copenhagen", lat: 55.6761, lon: 12.5683, offset: 2, flag: "dk", continent: "Europe" },
+            { name: "Chicago", lat: 41.8781, lon: -87.6298, offset: -5, flag: "us", continent: "North America" },
+            { name: "Miami", lat: 25.7617, lon: -80.1918, offset: -4, flag: "us()", continent: "North America" },
+            { name: "Vancouver", lat: 49.2827, lon: -123.1207, offset: -7, flag: "ca", continent: "North America" },
+            { name: "Mexico City", lat: 19.4326, lon: -99.1332, offset: -5, flag: "mx", continent: "North America" },
             { name: "Sao Paulo", lat: -23.5505, lon: -46.6333, offset: -3, flag: "br", continent: "South America" },
             { name: "Buenos Aires", lat: -34.6037, lon: -58.3816, offset: -3, flag: "ar", continent: "South America" },
             { name: "Rio de Janeiro", lat: -22.9068, lon: -43.1729, offset: -3, flag: "br", continent: "South America" },
@@ -360,7 +368,7 @@
                 return cachedData.data;
             }
 
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}¤t_weather=true&hourly=relativehumidity_2m&timezone=auto`;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true&hourly=relativehumidity_2m&timezone=auto`;
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(url);
@@ -546,7 +554,7 @@
 
         initializeWeather().then(() => {
             updateAll();
-            setInterval(updateWeather, 10 * 60 * 1000);
+            setInterval(updateWeather, 30 * 60 * 1000);
         }).catch(error => {
             console.error("Failed to initialize weather:", error);
         });

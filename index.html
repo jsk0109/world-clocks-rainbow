@@ -24,7 +24,9 @@
     </div>
     <div id="filter-buttons"></div>
     <div id="search-container">
-        <input type="text" id="city-search" placeholder="Search for a city...">
+        <input type="text" id="city-search" placeholder="Search for a city..." list="city-suggestions">
+        <button id="search-btn">🔍</button>
+        <datalist id="city-suggestions"></datalist>
     </div>
     <div id="clocks-container"></div>
     <div id="load-more-container">
@@ -498,6 +500,7 @@
         const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes cache
         let displayedCount = 0;
         const LOAD_CHUNK = 49; // 7 continents x 7 cities
+        let clocks = [];
 
         async function fetchWeatherChunk(citiesChunk, retries = 3) {
             const promises = citiesChunk.map(city => fetchWeather(city, retries));
@@ -511,7 +514,7 @@
                 return cachedData.data;
             }
 
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}¤t_weather=true&hourly=relativehumidity_2m&timezone=auto`;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true&hourly=relativehumidity_2m&timezone=auto`;
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(url);
@@ -651,12 +654,16 @@
         }
 
         // 초기 로드 및 더보기 기능
-        let clocks = [];
         function loadClocks() {
             const citiesToLoad = cities.slice(displayedCount, displayedCount + LOAD_CHUNK);
+            if (citiesToLoad.length === 0) {
+                document.getElementById("load-more").style.display = "none";
+                return;
+            }
+
             const newClocks = citiesToLoad.map(city => ({ clock: createClock(city), city }));
             clocks.push(...newClocks);
-            displayedCount += LOAD_CHUNK;
+            displayedCount += citiesToLoad.length;
 
             // 더보기 버튼 상태 업데이트
             if (displayedCount >= cities.length) {
@@ -675,6 +682,10 @@
                 updateAll();
             }).catch(error => {
                 console.error("Failed to initialize weather for chunk:", error);
+                newClocks.forEach(({ clock }) => {
+                    clock.querySelector(".weather-info").classList.remove("loading");
+                    clock.querySelector(".weather-info").innerHTML = "Weather: N/A";
+                });
             });
 
             // 전체 화면 이벤트 추가
@@ -727,20 +738,39 @@
         loadClocks();
 
         // 더보기 버튼 이벤트
-        document.getElementById("load-more").addEventListener("click", loadClocks);
+        document.getElementById("load-more").addEventListener("click", () => {
+            loadClocks();
+        });
 
         // 검색 기능
         const searchInput = document.getElementById("city-search");
-        searchInput.addEventListener("input", () => {
+        const searchBtn = document.getElementById("search-btn");
+        const suggestions = document.getElementById("city-suggestions");
+
+        // 자동완성 데이터리스트 생성
+        cities.forEach(city => {
+            const option = document.createElement("option");
+            option.value = city.name;
+            suggestions.appendChild(option);
+        });
+
+        function performSearch() {
             const query = searchInput.value.toLowerCase();
             const clocks = document.querySelectorAll(".clock-container");
             clocks.forEach(clock => {
                 const cityName = clock.querySelector(".city-name").textContent.toLowerCase();
                 clock.style.display = cityName.includes(query) ? "block" : "none";
             });
-            // 검색 중에는 더보기 버튼 숨김
             document.getElementById("load-more").style.display = query ? "none" : (displayedCount < cities.length ? "block" : "none");
+        }
+
+        searchInput.addEventListener("input", performSearch);
+        searchInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                performSearch();
+            }
         });
+        searchBtn.addEventListener("click", performSearch);
 
         updateAll();
         setInterval(updateAll, 1000);

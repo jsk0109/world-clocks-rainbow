@@ -82,6 +82,8 @@ nav ul li a:hover {
 #search-container {
     text-align: center;
     margin: 20px 0;
+    position: relative;
+    display: inline-block;
 }
 
 #city-search {
@@ -90,6 +92,19 @@ nav ul li a:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
+    padding-right: 40px;
+}
+
+#search-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
 }
 
 #clocks-container {
@@ -107,8 +122,13 @@ nav ul li a:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 200px;
+    height: 150px;
     transition: transform 0.3s ease;
     transform-origin: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: 4 / 3;
 }
 
 .clock-container:hover {
@@ -198,6 +218,7 @@ nav ul li a:hover {
 .city-name {
     font-size: 1.2em;
     font-weight: bold;
+    overflow-wrap: break-word;
 }
 
 .digital-clock {
@@ -212,6 +233,7 @@ nav ul li a:hover {
 .weather-info {
     font-size: 0.9em;
     color: #000000;
+    overflow-wrap: break-word;
 }
 
 .weather-info.loading {
@@ -320,6 +342,8 @@ select, input[type="datetime-local"] {
 
     .clock-container {
         width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
     }
 
     .clock-container:hover {
@@ -332,6 +356,10 @@ select, input[type="datetime-local"] {
 
     #city-search {
         width: 90%;
+    }
+
+    #search-btn {
+        right: 15px;
     }
 
     select, input[type="datetime-local"], #convert-btn {

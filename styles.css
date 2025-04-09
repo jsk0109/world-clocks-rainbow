@@ -58,17 +58,26 @@ nav ul li a:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    color: white;
+    transition: transform 0.3s, opacity 0.3s;
 }
 
 .filter-btn:hover {
+    transform: scale(1.05);
     opacity: 0.8;
 }
 
 .filter-btn.active {
-    background-color: #007BFF;
-    color: white;
+    transform: scale(1.1);
 }
+
+.filter-btn:nth-child(1) { background-color: #D32F2F; } /* All - 빨강 */
+.filter-btn:nth-child(2) { background-color: #F57C00; } /* Asia - 주황 */
+.filter-btn:nth-child(3) { background-color: #FBC02D; } /* Europe - 노랑 */
+.filter-btn:nth-child(4) { background-color: #388E3C; } /* N America - 초록 */
+.filter-btn:nth-child(5) { background-color: #1976D2; } /* S 🙂America - 파랑 */
+.filter-btn:nth-child(6) { background-color: #303F9F; } /* Africa - 남색 */
+.filter-btn:nth-child(7) { background-color: #7B1FA2; } /* Oceania - 보라 */
 
 #clocks-container {
     display: flex;
@@ -89,7 +98,7 @@ nav ul li a:hover {
 }
 
 .clock-container:hover {
-    transform: scale(1.1);
+    transform: scale(1.5);
     z-index: 10;
 }
 
@@ -116,13 +125,12 @@ nav ul li a:hover {
 }
 
 .seconds {
-    font-size: 0.8em;
-    color: #666;
+    opacity: 0.5;
 }
 
 .weather-info {
     font-size: 0.9em;
-    color: #555;
+    color: #000000;
 }
 
 .weather-info.loading {
@@ -135,10 +143,12 @@ nav ul li a:hover {
 
 .temperature {
     font-weight: bold;
+    color: #D32F2F;
 }
 
 .humidity {
     font-style: italic;
+    color: #1976D2;
 }
 
 .qna-section, .faq-section {
@@ -233,5 +243,9 @@ select, input[type="datetime-local"] {
 
     select, input[type="datetime-local"], #convert-btn {
         width: 100%;
+    }
+
+    .clock-container:hover {
+        transform: scale(1.5);
     }
 }

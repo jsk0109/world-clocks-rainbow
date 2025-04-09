@@ -161,7 +161,7 @@
                 return cachedData.data;
             }
 
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true&hourly=relativehumidity_2m&timezone=auto`;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}¤t_weather=true&hourly=relativehumidity_2m&timezone=auto`;
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(url);
@@ -372,6 +372,22 @@
                     content.style.padding = "15px";
                 }
             });
+        });
+
+        // 시계 색상 동적 적용
+        const continentColors = {
+            "North America": "#388E3C", // 초록
+            "Europe": "#FBC02D",        // 노랑
+            "Asia": "#F57C00",          // 주황
+            "South America": "#1976D2", // 파랑
+            "Africa": "#303F9F",        // 남색
+            "Oceania": "#7B1FA2"        // 보라
+        };
+
+        document.querySelectorAll(".clock-container").forEach(clock => {
+            const continent = clock.dataset.continent;
+            const color = continentColors[continent] || "#000000";
+            clock.querySelector(".digital-clock").style.color = color;
         });
     </script>
 </body>

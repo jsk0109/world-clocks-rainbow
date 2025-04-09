@@ -75,7 +75,7 @@ nav ul li a:hover {
 .filter-btn:nth-child(2) { background-color: #F57C00; } /* Asia - 주황 */
 .filter-btn:nth-child(3) { background-color: #FBC02D; } /* Europe - 노랑 */
 .filter-btn:nth-child(4) { background-color: #388E3C; } /* N America - 초록 */
-.filter-btn:nth-child(5) { background-color: #1976D2; } /* S 🙂America - 파랑 */
+.filter-btn:nth-child(5) { background-color: #1976D2; } /* S America - 파랑 */
 .filter-btn:nth-child(6) { background-color: #303F9F; } /* Africa - 남색 */
 .filter-btn:nth-child(7) { background-color: #7B1FA2; } /* Oceania - 보라 */
 
@@ -95,6 +95,7 @@ nav ul li a:hover {
     text-align: center;
     width: 200px;
     transition: transform 0.3s ease;
+    transform-origin: center center;
 }
 
 .clock-container:hover {

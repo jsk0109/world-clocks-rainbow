@@ -258,7 +258,6 @@
                     document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
                     filterClocks(continent === "All" ? "All" : continent.replace("N ", "North ").replace("S ", "South "));
-                    setTransformOrigin();
                 });
                 container.appendChild(btn);
             });
@@ -301,43 +300,6 @@
             });
         }
 
-        function setTransformOrigin() {
-            const clocks = document.querySelectorAll(".clock-container");
-            const visibleClocks = Array.from(clocks).filter(clock => clock.style.display !== "none");
-
-            visibleClocks.forEach((clock, visibleIndex) => {
-                const rect = clock.getBoundingClientRect();
-                const windowWidth = window.innerWidth;
-                const windowHeight = window.innerHeight;
-
-                let originX = "center";
-                let originY = "center";
-
-                const row = Math.floor(visibleIndex / 5) + 1;
-                const col = (visibleIndex % 5) + 1;
-
-                const isEdge = row === 1 || row === Math.ceil(visibleClocks.length / 5) || col === 1 || col === 5;
-
-                if (!isEdge) {
-                    clock.style.transformOrigin = "center center";
-                } else {
-                    if (rect.left < windowWidth * 0.15) {
-                        originX = "left";
-                    } else if (rect.right > windowWidth * 0.85) {
-                        originX = "right";
-                    }
-
-                    if (rect.top < windowHeight * 0.15) {
-                        originY = "top";
-                    } else if (rect.bottom > windowHeight * 0.85) {
-                        originY = "bottom";
-                    }
-
-                    clock.style.transformOrigin = `${originY} ${originX}`;
-                }
-            });
-        }
-
         const clocks = cities.map(city => ({ clock: createClock(city), city }));
 
         createFilterButtons();
@@ -351,9 +313,6 @@
         }).catch(error => {
             console.error("Failed to initialize weather:", error);
         });
-
-        window.addEventListener("resize", setTransformOrigin);
-        setTransformOrigin();
 
         document.querySelectorAll(".accordion-header").forEach(header => {
             header.addEventListener("click", () => {

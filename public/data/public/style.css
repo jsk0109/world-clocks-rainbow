@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #000000; /* 검정 바탕 */
+}
+
+nav ul li {
+    margin: 5px 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #FFFFFF; /* 흰색 글씨 */
+    font-weight: bold;
+}
+
+/* 모바일 크기에서 2~3줄로 보이도록 */
+@media (max-width: 768px) {
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        flex: 1 1 30%;
+        text-align: center;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li {
+        flex: 1 1 45%;
+    }
+}
+
+.hero-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.hero-section p {
+    margin: 10px 0 0;
+    color: #666;
+}
+
+#search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#search {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#filter-buttons {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* 필터 버튼 무지개색 (빨주노초파남보) */
+.filter-btn.active[data-continent=""] {
+    background-color: #D32F2F; /* 빨간색 (All) */
+    color: white;
+}
+
+.filter-btn.active[data-continent="Asia"] {
+    background-color: #F57C00; /* 주황색 */
+    color: white;
+}
+
+.filter-btn.active[data-continent="Europe"] {
+    background-color: #FBC02D; /* 노란색 */
+    color: white;
+}
+
+.filter-btn.active[data-continent="North America"] {
+    background-color: #388E3C; /* 초록색 */
+    color: white;
+}
+
+.filter-btn.active[data-continent="South America"] {
+    background-color: #1976D2; /* 파란색 */
+    color: white;
+}
+
+.filter-btn.active[data-continent="Africa"] {
+    background-color: #303F9F; /* 남색 */
+    color: white;
+}
+
+.filter-btn.active[data-continent="Oceania"] {
+    background-color: #7B1FA2; /* 보라색 */
+    color: white;
+}
+
+#clocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.clock-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.clock-container:hover {
+    transform: scale(1.5); /* 50% 확대 */
+}
+
+.city-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.flag-img {
+    width: 24px;
+    height: 18px;
+}
+
+.city-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.digital-clock {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+/* 초 단위 숫자 스타일 */
+.digital-clock .seconds {
+    font-size: 0.8em; /* 시/분보다 작게 */
+    opacity: 0.7; /* 연한 색상 */
+}
+
+.weather-info {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.weather-info.loading {
+    color: #999;
+}
+
+.weather-icon {
+    font-size: 1.2em;
+}
+
+/* 날씨와 습도 숫자 색상 */
+.weather-info .temperature {
+    color: #FF0000; /* 빨간색 */
+}
+
+.weather-info .humidity {
+    color: #0000FF; /* 파란색 */
+}
+
+#load-more {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#load-more:hover {
+    background-color: #0056D2;
+}
+
+#load-more:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

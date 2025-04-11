@@ -48,25 +48,23 @@
     </div>
 
     <script>
-        const cities = [
-            { name: "New York", timezone: "America/New_York", continent: "North America" },
-            { name: "Seoul", timezone: "Asia/Seoul", continent: "Asia" },
-            { name: "London", timezone: "Europe/London", continent: "Europe" }
-            // 더 많은 도시 추가 가능
-        ];
-
-        const fromCitySelect = document.getElementById("from-city");
-        const toCitySelect = document.getElementById("to-city");
-        const datetimeInput = document.getElementById("datetime");
-        const convertBtn = document.getElementById("convert-btn");
-        const resultDiv = document.getElementById("result");
-
-        cities.forEach(city => {
-            const option1 = new Option(city.name, city.timezone);
-            const option2 = new Option(city.name, city.timezone);
-            fromCitySelect.add(option1);
-            toCitySelect.add(option2);
-        });
+   document.addEventListener('DOMContentLoaded', async () => {
+  const responses = await Promise.all([
+    fetch('/data/cities1.json'),
+    fetch('/data/cities2.json'),
+    fetch('/data/cities3.json'),
+    fetch('/data/cities4.json'),
+    fetch('/data/cities5.json')
+  ]);
+  const cityArrays = await Promise.all(responses.map(res => res.json()));
+  const cities = cityArrays.flat();
+  const fromCitySelect = document.getElementById('from-city');
+  const toCitySelect = document.getElementById('to-city');
+  cities.forEach(city => {
+    fromCitySelect.add(new Option(city.name, city.timezone));
+    toCitySelect.add(new Option(city.name, city.timezone));
+  });
+});
 
         convertBtn.addEventListener("click", () => {
             const fromTimezone = fromCitySelect.value;

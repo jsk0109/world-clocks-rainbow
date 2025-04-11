@@ -249,7 +249,10 @@ async function fetchWeather(city) {
     const url = `/api/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true&hourly=relativehumidity_2m&timezone=auto`;
     try {
         const response = await fetch(url);
-        if (!response.ok) throw new Error("API error");
+        if (!response.ok) {
+    console.log("Response status:", response.status, await response.text());
+    throw new Error("API error");
+}
         const data = await response.json();
         const weather = {
             temperature: data.current_weather.temperature,

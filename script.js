@@ -246,7 +246,7 @@ async function fetchWeather(city) {
     let cachedData = cached ? JSON.parse(cached) : null;
     if (cachedData && Date.now() - cachedData.timestamp < CACHE_DURATION) return cachedData.data;
 
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}¤t_weather=true&hourly=relativehumidity_2m&timezone=auto`;
+    const url = `/api/v1/forecast?latitude=${city.lat}&longitude=${city.lon}¤t_weather=true&hourly=relativehumidity_2m&timezone=auto`;
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error("API error");

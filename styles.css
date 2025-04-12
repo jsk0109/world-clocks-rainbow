@@ -5,7 +5,7 @@ nav ul {
     flex-wrap: wrap;
     justify-content: center;
     background-color: #000;
-    margin: 0;
+    margin: 20;
 }
 nav ul li {
     flex: 1 1 14.28%;
@@ -16,15 +16,15 @@ nav ul li a {
     padding: 10px;
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 22px;
 }
 nav ul li a:hover {
     background-color: #333;
 }
 .hero-section {
     text-align: center;
-    padding: 40px;
-    margin-bottom: 20px;
+    padding: 50px;
+    margin-bottom: 10px;
 }
 .hero-section h1 {
     font-size: 40px;
@@ -34,7 +34,7 @@ nav ul li a:hover {
     line-height: 1.2;
 }
 .hero-section p {
-    font-size: 20px;
+    font-size: 14px;
     color: #777;
     margin-top: 2px;
 }
@@ -52,9 +52,9 @@ nav ul li a:hover {
 }
 #search {
     padding: 10px;
-    width: 300px;
+    width: 400px;
     max-width: 90%;
-    font-size: 16px;
+    font-size: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -91,11 +91,11 @@ nav ul li a:hover {
     background-color: #FBC02D; /* 노란색 */
     color: white;
 }
-.filter-btn.active[data-continent="North America"] {
+.filter-btn.active[data-continent="N America"] {
     background-color: #388E3C; /* 초록색 */
     color: white;
 }
-.filter-btn.active[data-continent="South America"] {
+.filter-btn.active[data-continent="S America"] {
     background-color: #1976D2; /* 파란색 */
     color: white;
 }
@@ -155,7 +155,7 @@ nav ul li a:hover {
 }
 #load-more {
     display: block;
-    margin: 20px auto;
+    margin: 40px auto;
     padding: 10px 20px;
     background-color: #007BFF; /* 파란색 */
     color: white;

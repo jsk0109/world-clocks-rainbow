@@ -1,8 +1,8 @@
 const cities = [
     // North America (1)
-    { name: "New York", lat: 40.7128, lon: -74.0060, offset: -4, flag: "us", continent: "North America" },
+    { name: "New York", lat: 40.7128, lon: -74.0060, offset: -4, flag: "us", continent: "N America" },
     // South America (2)
-    { name: "Sao Paulo", lat: -23.5505, lon: -46.6333, offset: -3, flag: "br", continent: "South America" },
+    { name: "Sao Paulo", lat: -23.5505, lon: -46.6333, offset: -3, flag: "br", continent: "S America" },
     // Europe (3)
     { name: "London", lat: 51.5074, lon: -0.1278, offset: 1, flag: "gb", continent: "Europe" },
     // Africa (4)
@@ -12,9 +12,9 @@ const cities = [
     // Oceania (6)
     { name: "Auckland", lat: -36.8485, lon: 174.7633, offset: 12, flag: "nz", continent: "Oceania" },
     // North America (7)
-    { name: "Los Angeles", lat: 34.0522, lon: -118.2437, offset: -7, flag: "us", continent: "North America" },
+    { name: "Los Angeles", lat: 34.0522, lon: -118.2437, offset: -7, flag: "us", continent: "N America" },
     // South America (8)
-    { name: "Buenos Aires", lat: -34.6037, lon: -58.3816, offset: -3, flag: "ar", continent: "South America" },
+    { name: "Buenos Aires", lat: -34.6037, lon: -58.3816, offset: -3, flag: "ar", continent: "S America" },
     // Europe (9)
     { name: "Madrid", lat: 40.4168, lon: -3.7038, offset: 2, flag: "es", continent: "Europe" },
     // Africa (10)
@@ -24,9 +24,9 @@ const cities = [
     // Oceania (12)
     { name: "Perth", lat: -31.9505, lon: 115.8605, offset: 8, flag: "au", continent: "Oceania" },
     // North America (13)
-    { name: "Miami", lat: 25.7617, lon: -80.1918, offset: -4, flag: "us", continent: "North America" },
+    { name: "Miami", lat: 25.7617, lon: -80.1918, offset: -4, flag: "us", continent: "N America" },
     // South America (14)
-    { name: "Bogota", lat: 4.7110, lon: -74.0721, offset: -5, flag: "co", continent: "South America" },
+    { name: "Bogota", lat: 4.7110, lon: -74.0721, offset: -5, flag: "co", continent: "S America" },
     // Europe (15)
     { name: "Amsterdam", lat: 52.3676, lon: 4.9041, offset: 2, flag: "nl", continent: "Europe" },
     // Africa (16)
@@ -36,9 +36,9 @@ const cities = [
     // Oceania (18)
     { name: "Adelaide", lat: -34.9285, lon: 138.6007, offset: 9.5, flag: "au", continent: "Oceania" },
     // North America (19)
-    { name: "San Francisco", lat: 37.7749, lon: -122.4194, offset: -7, flag: "us", continent: "North America" },
+    { name: "San Francisco", lat: 37.7749, lon: -122.4194, offset: -7, flag: "us", continent: "N America" },
     // South America (20)
-    { name: "Quito", lat: -0.1807, lon: -78.4678, offset: -5, flag: "ec", continent: "South America" },
+    { name: "Quito", lat: -0.1807, lon: -78.4678, offset: -5, flag: "ec", continent: "S America" },
     // Europe (21)
     { name: "Paris", lat: 48.8566, lon: 2.3522, offset: 2, flag: "fr", continent: "Europe" },
     // Africa (22)
@@ -48,9 +48,9 @@ const cities = [
     // Oceania (24)
     { name: "Melbourne", lat: -37.8136, lon: 144.9631, offset: 10, flag: "au", continent: "Oceania" },
     // North America (25)
-    { name: "Chicago", lat: 41.8781, lon: -87.6298, offset: -5, flag: "us", continent: "North America" },
+    { name: "Chicago", lat: 41.8781, lon: -87.6298, offset: -5, flag: "us", continent: "N America" },
     // South America (26)
-    { name: "Lima", lat: -12.0464, lon: -77.0428, offset: -5, flag: "pe", continent: "South America" },
+    { name: "Lima", lat: -12.0464, lon: -77.0428, offset: -5, flag: "pe", continent: "S America" },
     // Europe (27)
     { name: "Berlin", lat: 52.5200, lon: 13.4050, offset: 2, flag: "de", continent: "Europe" },
     // Africa (28)
@@ -60,9 +60,9 @@ const cities = [
     // Oceania (30)
     { name: "Brisbane", lat: -27.4698, lon: 153.0251, offset: 10, flag: "au", continent: "Oceania" },
     // North America (31)
-    { name: "Toronto", lat: 43.6532, lon: -79.3832, offset: -4, flag: "ca", continent: "North America" },
+    { name: "Toronto", lat: 43.6532, lon: -79.3832, offset: -4, flag: "ca", continent: "N America" },
     // South America (32)
-    { name: "Santiago", lat: -33.4489, lon: -70.6693, offset: -4, flag: "cl", continent: "South America" },
+    { name: "Santiago", lat: -33.4489, lon: -70.6693, offset: -4, flag: "cl", continent: "S America" },
     // Europe (33)
     { name: "Rome", lat: 41.9028, lon: 12.4964, offset: 2, flag: "it", continent: "Europe" },
     // Africa (34)
@@ -72,9 +72,9 @@ const cities = [
     // Oceania (36)
     { name: "Hobart", lat: -42.8821, lon: 147.3272, offset: 10, flag: "au", continent: "Oceania" },
     // North America (37)
-    { name: "Vancouver", lat: 49.2827, lon: -123.1207, offset: -7, flag: "ca", continent: "North America" },
+    { name: "Vancouver", lat: 49.2827, lon: -123.1207, offset: -7, flag: "ca", continent: "N America" },
     // South America (38)
-    { name: "Caracas", lat: 10.4806, lon: -66.9036, offset: -4, flag: "ve", continent: "South America" },
+    { name: "Caracas", lat: 10.4806, lon: -66.9036, offset: -4, flag: "ve", continent: "S America" },
     // Europe (39)
     { name: "Vienna", lat: 48.2082, lon: 16.3738, offset: 2, flag: "at", continent: "Europe" },
     // Africa (40)
@@ -84,9 +84,9 @@ const cities = [
     // Oceania (42)
     { name: "Darwin", lat: -12.4634, lon: 130.8456, offset: 9.5, flag: "au", continent: "Oceania" },
     // North America (43)
-    { name: "Montreal", lat: 45.5017, lon: -73.5673, offset: -4, flag: "ca", continent: "North America" },
+    { name: "Montreal", lat: 45.5017, lon: -73.5673, offset: -4, flag: "ca", continent: "N America" },
     // South America (44)
-    { name: "Montevideo", lat: -34.9011, lon: -56.1645, offset: -3, flag: "uy", continent: "South America" },
+    { name: "Montevideo", lat: -34.9011, lon: -56.1645, offset: -3, flag: "uy", continent: "S America" },
     // Europe (45)
     { name: "Stockholm", lat: 59.3293, lon: 18.0686, offset: 2, flag: "se", continent: "Europe" },
     // Africa (46)
@@ -96,9 +96,9 @@ const cities = [
     // Oceania (48)
     { name: "Wellington", lat: -41.2865, lon: 174.7762, offset: 12, flag: "nz", continent: "Oceania" },
     // North America (49)
-    { name: "Houston", lat: 29.7604, lon: -95.3698, offset: -5, flag: "us", continent: "North America" },
+    { name: "Houston", lat: 29.7604, lon: -95.3698, offset: -5, flag: "us", continent: "N America" },
     // South America (50)
-    { name: "Asuncion", lat: -25.2637, lon: -57.5759, offset: -4, flag: "py", continent: "South America" },
+    { name: "Asuncion", lat: -25.2637, lon: -57.5759, offset: -4, flag: "py", continent: "S America" },
     // Europe (51)
     { name: "Zurich", lat: 47.3769, lon: 8.5417, offset: 2, flag: "ch", continent: "Europe" },
     // Africa (52)
@@ -108,9 +108,9 @@ const cities = [
     // Oceania (54)
     { name: "Canberra", lat: -35.2809, lon: 149.1300, offset: 10, flag: "au", continent: "Oceania" },
     // North America (55)
-    { name: "Dallas", lat: 32.7767, lon: -96.7970, offset: -5, flag: "us", continent: "North America" },
+    { name: "Dallas", lat: 32.7767, lon: -96.7970, offset: -5, flag: "us", continent: "N America" },
     // South America (56)
-    { name: "La Paz", lat: -16.4897, lon: -68.1193, offset: -4, flag: "bo", continent: "South America" },
+    { name: "La Paz", lat: -16.4897, lon: -68.1193, offset: -4, flag: "bo", continent: "S America" },
     // Europe (57)
     { name: "Prague", lat: 50.0755, lon: 14.4378, offset: 2, flag: "cz", continent: "Europe" },
     // Africa (58)
@@ -120,9 +120,9 @@ const cities = [
     // Oceania (60)
     { name: "Christchurch", lat: -43.5320, lon: 172.6362, offset: 12, flag: "nz", continent: "Oceania" },
     // North America (61)
-    { name: "Phoenix", lat: 33.4484, lon: -112.0740, offset: -7, flag: "us", continent: "North America" },
+    { name: "Phoenix", lat: 33.4484, lon: -112.0740, offset: -7, flag: "us", continent: "N America" },
     // South America (62)
-    { name: "Medellin", lat: 6.2442, lon: -75.5812, offset: -5, flag: "co", continent: "South America" },
+    { name: "Medellin", lat: 6.2442, lon: -75.5812, offset: -5, flag: "co", continent: "S America" },
     // Europe (63)
     { name: "Warsaw", lat: 52.2297, lon: 21.0122, offset: 2, flag: "pl", continent: "Europe" },
     // Africa (64)
@@ -132,9 +132,9 @@ const cities = [
     // Oceania (66)
     { name: "Sydney", lat: -33.8688, lon: 151.2093, offset: 10, flag: "au", continent: "Oceania" },
     // North America (67)
-    { name: "Seattle", lat: 47.6062, lon: -122.3321, offset: -7, flag: "us", continent: "North America" },
+    { name: "Seattle", lat: 47.6062, lon: -122.3321, offset: -7, flag: "us", continent: "N America" },
     // South America (68)
-    { name: "Brasilia", lat: -15.8267, lon: -47.9218, offset: -3, flag: "br", continent: "South America" },
+    { name: "Brasilia", lat: -15.8267, lon: -47.9218, offset: -3, flag: "br", continent: "S America" },
     // Europe (69)
     { name: "Budapest", lat: 47.4979, lon: 19.0402, offset: 2, flag: "hu", continent: "Europe" },
     // Africa (70)
@@ -144,9 +144,9 @@ const cities = [
     // Oceania (72)
     { name: "Fiji", lat: -18.1248, lon: 178.4501, offset: 12, flag: "fj", continent: "Oceania" },
     // North America (73)
-    { name: "Boston", lat: 42.3601, lon: -71.0589, offset: -4, flag: "us", continent: "North America" },
+    { name: "Boston", lat: 42.3601, lon: -71.0589, offset: -4, flag: "us", continent: "N America" },
     // South America (74)
-    { name: "Rio de Janeiro", lat: -22.9068, lon: -43.1729, offset: -3, flag: "br", continent: "South America" },
+    { name: "Rio de Janeiro", lat: -22.9068, lon: -43.1729, offset: -3, flag: "br", continent: "S America" },
     // Europe (75)
     { name: "Copenhagen", lat: 55.6761, lon: 12.5683, offset: 2, flag: "dk", continent: "Europe" },
     // Africa (76)
@@ -156,9 +156,9 @@ const cities = [
     // Oceania (78)
     { name: "Port Moresby", lat: -9.4438, lon: 147.1803, offset: 10, flag: "pg", continent: "Oceania" },
     // North America (79)
-    { name: "Denver", lat: 39.7392, lon: -104.9903, offset: -6, flag: "us", continent: "North America" },
+    { name: "Denver", lat: 39.7392, lon: -104.9903, offset: -6, flag: "us", continent: "N America" },
     // South America (80)
-    { name: "Guayaquil", lat: -2.1700, lon: -79.9224, offset: -5, flag: "ec", continent: "South America" },
+    { name: "Guayaquil", lat: -2.1700, lon: -79.9224, offset: -5, flag: "ec", continent: "S America" },
     // Europe (81)
     { name: "Lisbon", lat: 38.7223, lon: -9.1393, offset: 1, flag: "pt", continent: "Europe" },
     // Africa (82)
@@ -168,9 +168,9 @@ const cities = [
     // Oceania (84)
     { name: "Nauru", lat: -0.5228, lon: 166.9315, offset: 12, flag: "nr", continent: "Oceania" },
     // North America (85)
-    { name: "Atlanta", lat: 33.7490, lon: -84.3880, offset: -4, flag: "us", continent: "North America" },
+    { name: "Atlanta", lat: 33.7490, lon: -84.3880, offset: -4, flag: "us", continent: "N America" },
     // South America (86)
-    { name: "Salvador", lat: -12.9714, lon: -38.5014, offset: -3, flag: "br", continent: "South America" },
+    { name: "Salvador", lat: -12.9714, lon: -38.5014, offset: -3, flag: "br", continent: "S America" },
     // Europe (87)
     { name: "Athens", lat: 37.9838, lon: 23.7275, offset: 3, flag: "gr", continent: "Europe" },
     // Africa (88)
@@ -180,9 +180,9 @@ const cities = [
     // Oceania (90)
     { name: "Tonga", lat: -21.1393, lon: -175.2049, offset: 13, flag: "to", continent: "Oceania" },
     // North America (91)
-    { name: "Philadelphia", lat: 39.9526, lon: -75.1652, offset: -4, flag: "us", continent: "North America" },
+    { name: "Philadelphia", lat: 39.9526, lon: -75.1652, offset: -4, flag: "us", continent: "N America" },
     // South America (92)
-    { name: "Recife", lat: -8.0476, lon: -34.8770, offset: -3, flag: "br", continent: "South America" },
+    { name: "Recife", lat: -8.0476, lon: -34.8770, offset: -3, flag: "br", continent: "S America" },
     // Europe (93)
     { name: "Dublin", lat: 53.3498, lon: -6.2603, offset: 1, flag: "ie", continent: "Europe" },
     // Africa (94)
@@ -192,9 +192,9 @@ const cities = [
     // Oceania (96)
     { name: "Samoa", lat: -13.7590, lon: -172.1046, offset: 13, flag: "ws", continent: "Oceania" },
     // North America (97)
-    { name: "Detroit", lat: 42.3314, lon: -83.0458, offset: -4, flag: "us", continent: "North America" },
+    { name: "Detroit", lat: 42.3314, lon: -83.0458, offset: -4, flag: "us", continent: "N America" },
     // South America (98)
-    { name: "Fortaleza", lat: -3.7172, lon: -38.5434, offset: -3, flag: "br", continent: "South America" },
+    { name: "Fortaleza", lat: -3.7172, lon: -38.5434, offset: -3, flag: "br", continent: "S America" },
     // Europe (99)
     { name: "Helsinki", lat: 60.1699, lon: 24.9384, offset: 3, flag: "fi", continent: "Europe" },
     // Africa (100)
@@ -204,9 +204,9 @@ const cities = [
     // Oceania (102)
     { name: "Vanuatu", lat: -17.7333, lon: 168.3273, offset: 11, flag: "vu", continent: "Oceania" },
     // North America (103)
-    { name: "San Diego", lat: 32.7157, lon: -117.1611, offset: -7, flag: "us", continent: "North America" },
+    { name: "San Diego", lat: 32.7157, lon: -117.1611, offset: -7, flag: "us", continent: "N America" },
     // South America (104)
-    { name: "Manaus", lat: -3.1190, lon: -60.0217, offset: -4, flag: "br", continent: "South America" },
+    { name: "Manaus", lat: -3.1190, lon: -60.0217, offset: -4, flag: "br", continent: "S America" },
     // Europe (105)
     { name: "Brussels", lat: 50.8503, lon: 4.3517, offset: 2, flag: "be", continent: "Europe" },
     // Africa (106)
@@ -216,9 +216,9 @@ const cities = [
     // Oceania (108)
     { name: "Solomon Islands", lat: -9.6457, lon: 160.1562, offset: 11, flag: "sb", continent: "Oceania" },
     // North America (109)
-    { name: "Portland", lat: 45.5152, lon: -122.6784, offset: -7, flag: "us", continent: "North America" },
+    { name: "Portland", lat: 45.5152, lon: -122.6784, offset: -7, flag: "us", continent: "N America" },
     // South America (110)
-    { name: "Porto Alegre", lat: -30.0346, lon: -51.2177, offset: -3, flag: "br", continent: "South America" },
+    { name: "Porto Alegre", lat: -30.0346, lon: -51.2177, offset: -3, flag: "br", continent: "S America" },
     // Europe (111)
     { name: "Oslo", lat: 59.9139, lon: 10.7522, offset: 2, flag: "no", continent: "Europe" },
     // Africa (112)
@@ -228,9 +228,9 @@ const cities = [
     // Oceania (114)
     { name: "Kiribati", lat: 1.8709, lon: -157.3626, offset: 14, flag: "ki", continent: "Oceania" },
     // North America (115)
-    { name: "Austin", lat: 30.2672, lon: -97.7431, offset: -5, flag: "us", continent: "North America" },
+    { name: "Austin", lat: 30.2672, lon: -97.7431, offset: -5, flag: "us", continent: "N America" },
     // South America (116)
-    { name: "Belo Horizonte", lat: -19.9167, lon: -43.9345, offset: -3, flag: "br", continent: "South America" },
+    { name: "Belo Horizonte", lat: -19.9167, lon: -43.9345, offset: -3, flag: "br", continent: "S America" },
     // Europe (117)
     { name: "Bucharest", lat: 44.4268, lon: 26.1025, offset: 3, flag: "ro", continent: "Europe" },
     // Africa (118)
@@ -240,9 +240,9 @@ const cities = [
     // Oceania (120)
     { name: "Tuvalu", lat: -8.5211, lon: 179.1981, offset: 12, flag: "tv", continent: "Oceania" },
     // North America (121)
-    { name: "San Antonio", lat: 29.4241, lon: -98.4936, offset: -5, flag: "us", continent: "North America" },
+    { name: "San Antonio", lat: 29.4241, lon: -98.4936, offset: -5, flag: "us", continent: "N America" },
     // South America (122)
-    { name: "Curitiba", lat: -25.4290, lon: -49.2671, offset: -3, flag: "br", continent: "South America" },
+    { name: "Curitiba", lat: -25.4290, lon: -49.2671, offset: -3, flag: "br", continent: "S America" },
     // Europe (123)
     { name: "Sofia", lat: 42.6977, lon: 23.3219, offset: 3, flag: "bg", continent: "Europe" },
     // Africa (124)
@@ -252,9 +252,9 @@ const cities = [
     // Oceania (126)
     { name: "Palau", lat: 7.5150, lon: 134.5825, offset: 9, flag: "pw", continent: "Oceania" },
     // North America (127)
-    { name: "Ottawa", lat: 45.4215, lon: -75.6972, offset: -4, flag: "ca", continent: "North America" },
+    { name: "Ottawa", lat: 45.4215, lon: -75.6972, offset: -4, flag: "ca", continent: "N America" },
     // South America (128)
-    { name: "Goiania", lat: -16.6869, lon: -49.2648, offset: -3, flag: "br", continent: "South America" },
+    { name: "Goiania", lat: -16.6869, lon: -49.2648, offset: -3, flag: "br", continent: "S America" },
     // Europe (129)
     { name: "Belgrade", lat: 44.7866, lon: 20.4489, offset: 2, flag: "rs", continent: "Europe" },
     // Africa (130)
@@ -264,9 +264,9 @@ const cities = [
     // Oceania (132)
     { name: "Marshall Islands", lat: 7.1315, lon: 171.1845, offset: 12, flag: "mh", continent: "Oceania" },
     // North America (133)
-    { name: "Calgary", lat: 51.0447, lon: -114.0719, offset: -6, flag: "ca", continent: "North America" },
+    { name: "Calgary", lat: 51.0447, lon: -114.0719, offset: -6, flag: "ca", continent: "N America" },
     // South America (134)
-    { name: "Campinas", lat: -22.9056, lon: -47.0608, offset: -3, flag: "br", continent: "South America" },
+    { name: "Campinas", lat: -22.9056, lon: -47.0608, offset: -3, flag: "br", continent: "S America" },
     // Europe (135)
     { name: "Zagreb", lat: 45.8150, lon: 15.9819, offset: 2, flag: "hr", continent: "Europe" },
     // Africa (136)
@@ -276,9 +276,9 @@ const cities = [
     // Oceania (138)
     { name: "Micronesia", lat: 6.9167, lon: 158.1561, offset: 11, flag: "fm", continent: "Oceania" },
     // North America (139)
-    { name: "Edmonton", lat: 53.5444, lon: -113.4909, offset: -6, flag: "ca", continent: "North America" },
+    { name: "Edmonton", lat: 53.5444, lon: -113.4909, offset: -6, flag: "ca", continent: "N America" },
     // South America (140)
-    { name: "Belem", lat: -1.4558, lon: -48.4902, offset: -3, flag: "br", continent: "South America" },
+    { name: "Belem", lat: -1.4558, lon: -48.4902, offset: -3, flag: "br", continent: "S America" },
     // Europe (141)
     { name: "Bratislava", lat: 48.1486, lon: 17.1077, offset: 2, flag: "sk", continent: "Europe" },
     // Africa (142)
@@ -288,9 +288,9 @@ const cities = [
     // Oceania (144)
     { name: "New Caledonia", lat: -22.2558, lon: 166.4505, offset: 11, flag: "nc", continent: "Oceania" },
     // North America (145)
-    { name: "Winnipeg", lat: 49.8951, lon: -97.1384, offset: -5, flag: "ca", continent: "North America" },
+    { name: "Winnipeg", lat: 49.8951, lon: -97.1384, offset: -5, flag: "ca", continent: "N America" },
     // South America (146)
-    { name: "Natal", lat: -5.7793, lon: -35.2009, offset: -3, flag: "br", continent: "South America" },
+    { name: "Natal", lat: -5.7793, lon: -35.2009, offset: -3, flag: "br", continent: "S America" },
     // Europe (147)
     { name: "Ljubljana", lat: 46.0569, lon: 14.5058, offset: 2, flag: "si", continent: "Europe" },
     // Africa (148)
@@ -300,9 +300,9 @@ const cities = [
     // Oceania (150)
     { name: "Tahiti", lat: -17.6509, lon: -149.4260, offset: -10, flag: "pf", continent: "Oceania" },
     // North America (151)
-    { name: "Halifax", lat: 44.6488, lon: -63.5752, offset: -3, flag: "ca", continent: "North America" },
+    { name: "Halifax", lat: 44.6488, lon: -63.5752, offset: -3, flag: "ca", continent: "N America" },
     // South America (152)
-    { name: "Joao Pessoa", lat: -7.1195, lon: -34.8450, offset: -3, flag: "br", continent: "South America" },
+    { name: "Joao Pessoa", lat: -7.1195, lon: -34.8450, offset: -3, flag: "br", continent: "S America" },
     // Europe (153)
     { name: "Riga", lat: 56.9496, lon: 24.1052, offset: 3, flag: "lv", continent: "Europe" },
     // Africa (154)
@@ -312,9 +312,9 @@ const cities = [
     // Oceania (156)
     { name: "Guam", lat: 13.4443, lon: 144.7937, offset: 10, flag: "gu", continent: "Oceania" },
     // North America (157)
-    { name: "St. John's", lat: 47.5615, lon: -52.7126, offset: -2.5, flag: "ca", continent: "North America" },
+    { name: "St. John's", lat: 47.5615, lon: -52.7126, offset: -2.5, flag: "ca", continent: "N America" },
     // South America (158)
-    { name: "Aracaju", lat: -10.9472, lon: -37.0731, offset: -3, flag: "br", continent: "South America" },
+    { name: "Aracaju", lat: -10.9472, lon: -37.0731, offset: -3, flag: "br", continent: "S America" },
     // Europe (159)
     { name: "Tallinn", lat: 59.4370, lon: 24.7535, offset: 3, flag: "ee", continent: "Europe" },
     // Africa (160)
@@ -324,9 +324,9 @@ const cities = [
     // Oceania (162)
     { name: "Hawaii", lat: 21.3069, lon: -157.8583, offset: -10, flag: "us", continent: "Oceania" },
     // North America (163)
-    { name: "Quebec City", lat: 46.8139, lon: -71.2080, offset: -4, flag: "ca", continent: "North America" },
+    { name: "Quebec City", lat: 46.8139, lon: -71.2080, offset: -4, flag: "ca", continent: "N America" },
     // South America (164)
-    { name: "Teresina", lat: -5.0892, lon: -42.8016, offset: -3, flag: "br", continent: "South America" },
+    { name: "Teresina", lat: -5.0892, lon: -42.8016, offset: -3, flag: "br", continent: "S America" },
     // Europe (165)
     { name: "Vilnius", lat: 54.6872, lon: 25.2797, offset: 3, flag: "lt", continent: "Europe" },
     // Africa (166)
@@ -336,9 +336,9 @@ const cities = [
     // Oceania (168)
     { name: "Cook Islands", lat: -21.2367, lon: -159.7777, offset: -10, flag: "ck", continent: "Oceania" },
     // North America (169)
-    { name: "Regina", lat: 50.4452, lon: -104.6189, offset: -6, flag: "ca", continent: "North America" },
+    { name: "Regina", lat: 50.4452, lon: -104.6189, offset: -6, flag: "ca", continent: "N America" },
     // South America (170)
-    { name: "Maceio", lat: -9.6658, lon: -35.7353, offset: -3, flag: "br", continent: "South America" },
+    { name: "Maceio", lat: -9.6658, lon: -35.7353, offset: -3, flag: "br", continent: "S America" },
     // Europe (171)
     { name: "Skopje", lat: 41.9981, lon: 21.4254, offset: 2, flag: "mk", continent: "Europe" },
     // Africa (172)
@@ -348,9 +348,9 @@ const cities = [
     // Oceania (174)
     { name: "Niue", lat: -19.0544, lon: -169.8672, offset: -11, flag: "nu", continent: "Oceania" },
     // North America (175)
-    { name: "Saskatoon", lat: 52.1332, lon: -106.6700, offset: -6, flag: "ca", continent: "North America" },
+    { name: "Saskatoon", lat: 52.1332, lon: -106.6700, offset: -6, flag: "ca", continent: "N America" },
     // South America (176)
-    { name: "Sao Luis", lat: -2.5297, lon: -44.3028, offset: -3, flag: "br", continent: "South America" },
+    { name: "Sao Luis", lat: -2.5297, lon: -44.3028, offset: -3, flag: "br", continent: "S America" },
     // Europe (177)
     { name: "Sarajevo", lat: 43.8563, lon: 18.4131, offset: 2, flag: "ba", continent: "Europe" },
     // Africa (178)
@@ -360,9 +360,9 @@ const cities = [
     // Oceania (180)
     { name: "Pitcairn Islands", lat: -25.0667, lon: -130.1015, offset: -8, flag: "pn", continent: "Oceania" },
     // North America (181)
-    { name: "Victoria", lat: 48.4284, lon: -123.3656, offset: -7, flag: "ca", continent: "North America" },
+    { name: "Victoria", lat: 48.4284, lon: -123.3656, offset: -7, flag: "ca", continent: "N America" },
     // South America (182)
-    { name: "Campo Grande", lat: -20.4697, lon: -54.6201, offset: -4, flag: "br", continent: "South America" },
+    { name: "Campo Grande", lat: -20.4697, lon: -54.6201, offset: -4, flag: "br", continent: "S America" },
     // Europe (183)
     { name: "Tirana", lat: 41.3275, lon: 19.8187, offset: 2, flag: "al", continent: "Europe" },
     // Africa (184)
@@ -372,9 +372,9 @@ const cities = [
     // Oceania (186)
     { name: "Norfolk Island", lat: -29.0408, lon: 167.9547, offset: 11, flag: "nf", continent: "Oceania" },
     // North America (187)
-    { name: "Anchorage", lat: 61.2181, lon: -149.9003, offset: -8, flag: "us", continent: "North America" },
+    { name: "Anchorage", lat: 61.2181, lon: -149.9003, offset: -8, flag: "us", continent: "N America" },
     // South America (188)
-    { name: "Cuiaba", lat: -15.6014, lon: -56.0979, offset: -4, flag: "br", continent: "South America" },
+    { name: "Cuiaba", lat: -15.6014, lon: -56.0979, offset: -4, flag: "br", continent: "S America" },
     // Europe (189)
     { name: "Chisinau", lat: 47.0105, lon: 28.8638, offset: 3, flag: "md", continent: "Europe" },
     // Africa (190)
@@ -384,9 +384,9 @@ const cities = [
     // Oceania (192)
     { name: "Tokelau", lat: -9.2002, lon: -171.8484, offset: 13, flag: "tk", continent: "Oceania" },
     // North America (193)
-    { name: "Fairbanks", lat: 64.8378, lon: -147.7164, offset: -8, flag: "us", continent: "North America" },
+    { name: "Fairbanks", lat: 64.8378, lon: -147.7164, offset: -8, flag: "us", continent: "N America" },
     // South America (194)
-    { name: "Porto Velho", lat: -8.7612, lon: -63.9004, offset: -4, flag: "br", continent: "South America" },
+    { name: "Porto Velho", lat: -8.7612, lon: -63.9004, offset: -4, flag: "br", continent: "S America" },
     // Europe (195)
     { name: "Yerevan", lat: 40.1792, lon: 44.4991, offset: 4, flag: "am", continent: "Asia" },
     // Africa (196)
@@ -396,9 +396,9 @@ const cities = [
     // Oceania (198)
     { name: "Wallis and Futuna", lat: -13.7688, lon: -177.1561, offset: 12, flag: "wf", continent: "Oceania" },
     // North America (199)
-    { name: "Juneau", lat: 58.3019, lon: -134.4197, offset: -8, flag: "us", continent: "North America" },
+    { name: "Juneau", lat: 58.3019, lon: -134.4197, offset: -8, flag: "us", continent: "N America" },
     // South America (200)
-    { name: "Boa Vista", lat: 2.8195, lon: -60.6733, offset: -4, flag: "br", continent: "South America" },
+    { name: "Boa Vista", lat: 2.8195, lon: -60.6733, offset: -4, flag: "br", continent: "S America" },
     // Europe (201)
     { name: "Tbilisi", lat: 41.7151, lon: 44.8271, offset: 4, flag: "ge", continent: "Asia" },
     // Africa (202)
@@ -408,9 +408,9 @@ const cities = [
     // Oceania (204)
     { name: "American Samoa", lat: -14.2700, lon: -170.1322, offset: -11, flag: "as", continent: "Oceania" },
     // North America (205)
-    { name: "Whitehorse", lat: 60.7212, lon: -135.0568, offset: -7, flag: "ca", continent: "North America" },
+    { name: "Whitehorse", lat: 60.7212, lon: -135.0568, offset: -7, flag: "ca", continent: "N America" },
     // South America (206)
-    { name: "Rio Branco", lat: -9.9748, lon: -67.8076, offset: -5, flag: "br", continent: "South America" },
+    { name: "Rio Branco", lat: -9.9748, lon: -67.8076, offset: -5, flag: "br", continent: "S America" },
     // Europe (207)
     { name: "Baku", lat: 40.4093, lon: 49.8671, offset: 4, flag: "az", continent: "Asia" },
     // Africa (208)
@@ -420,9 +420,9 @@ const cities = [
     // Oceania (210)
     { name: "Easter Island", lat: -27.1127, lon: -109.3497, offset: -6, flag: "cl", continent: "Oceania" },
     // North America (211)
-    { name: "Yellowknife", lat: 62.4540, lon: -114.3718, offset: -6, flag: "ca", continent: "North America" },
+    { name: "Yellowknife", lat: 62.4540, lon: -114.3718, offset: -6, flag: "ca", continent: "N America" },
     // South America (212)
-    { name: "Galapagos", lat: -0.9538, lon: -90.9656, offset: -6, flag: "ec", continent: "South America" },
+    { name: "Galapagos", lat: -0.9538, lon: -90.9656, offset: -6, flag: "ec", continent: "S America" },
     // Europe (213)
     { name: "Porto", lat: 41.1579, lon: -8.6291, offset: 1, flag: "pt", continent: "Europe" },
     // Africa (214)
@@ -430,7 +430,7 @@ const cities = [
     // Asia (215)
     { name: "Amman", lat: 31.9539, lon: 35.9106, offset: 3, flag: "jo", continent: "Asia" },
     // North America (216)
-    { name: "St. Louis", lat: 38.6270, lon: -90.1994, offset: -5, flag: "us", continent: "North America" },
+    { name: "St. Louis", lat: 38.6270, lon: -90.1994, offset: -5, flag: "us", continent: "N America" },
     // Europe (217)
     { name: "Milan", lat: 45.4642, lon: 9.1900, offset: 2, flag: "it", continent: "Europe" },
     // Africa (218)
@@ -438,7 +438,7 @@ const cities = [
     // Asia (219)
     { name: "Baghdad", lat: 33.3152, lon: 44.3661, offset: 3, flag: "iq", continent: "Asia" },
     // North America (220)
-    { name: "Kansas City", lat: 39.0997, lon: -94.5786, offset: -5, flag: "us", continent: "North America" },
+    { name: "Kansas City", lat: 39.0997, lon: -94.5786, offset: -5, flag: "us", continent: "N America" },
     // Europe (221)
     { name: "Barcelona", lat: 41.3851, lon: 2.1734, offset: 2, flag: "es", continent: "Europe" },
     // Africa (222)
@@ -446,7 +446,7 @@ const cities = [
     // Asia (223)
     { name: "Riyadh", lat: 24.7136, lon: 46.6753, offset: 3, flag: "sa", continent: "Asia" },
     // North America (224)
-    { name: "Minneapolis", lat: 44.9778, lon: -93.2650, offset: -5, flag: "us", continent: "North America" },
+    { name: "Minneapolis", lat: 44.9778, lon: -93.2650, offset: -5, flag: "us", continent: "N America" },
     // Europe (225)
     { name: "Munich", lat: 48.1351, lon: 11.5820, offset: 2, flag: "de", continent: "Europe" },
     // Africa (226)
@@ -454,7 +454,7 @@ const cities = [
     // Asia (227)
     { name: "Dubai", lat: 25.2048, lon: 55.2708, offset: 4, flag: "ae", continent: "Asia" },
     // North America (228)
-    { name: "Cleveland", lat: 41.4993, lon: -81.6944, offset: -4, flag: "us", continent: "North America" },
+    { name: "Cleveland", lat: 41.4993, lon: -81.6944, offset: -4, flag: "us", continent: "N America" },
     // Europe (229)
     { name: "Florence", lat: 43.7696, lon: 11.2558, offset: 2, flag: "it", continent: "Europe" },
     // Africa (230)
@@ -462,21 +462,95 @@ const cities = [
     // Asia (231)
     { name: "Kuwait City", lat: 29.3759, lon: 47.9774, offset: 3, flag: "kw", continent: "Asia" },
     // North America (232)
-    { name: "Tampa", lat: 27.9506, lon: -82.4572, offset: -4, flag: "us", continent: "North America" },
+    { name: "Tampa", lat: 27.9506, lon: -82.4572, offset: -4, flag: "us", continent: "N America" },
     // Europe (233)
     { name: "Venice", lat: 45.4408, lon: 12.3155, offset: 2, flag: "it", continent: "Europe" },
     // Africa (234)
     { name: "Malabo", lat: 3.7504, lon: 8.7832, offset: 1, flag: "gq", continent: "Africa" }
 ];
+let cityInfo = {};
+
+async function loadCityInfo() {
+    try {
+        // 5개 JSON 파일 경로
+        const files = [
+            '/data/public/data/cities1.json',
+            '/data/public/data/cities2.json',
+            '/data/public/data/cities3.json',
+            '/data/public/data/cities4.json',
+            '/data/public/data/cities5.json'
+        ];
+
+        // 각 파일 로드
+        const responses = await Promise.all(files.map(file => fetch(file)));
+        const data = await Promise.all(responses.map(res => res.json()));
+
+        // 데이터 병합
+        cityInfo = Object.assign({}, ...data);
+        console.log("City info loaded:", cityInfo);
+    } catch (error) {
+        console.error("Error loading city info:", error);
+    }
+}
 
 const continentColors = {
-    "North America": "#388E3C", /* 초록색 */
+    "N America": "#388E3C", /* 초록색 */
     "Europe": "#FBC02D",        /* 노란색 */
     "Asia": "#F57C00",          /* 주황색 */
-    "South America": "#1976D2", /* 파란색 */
+    "S America": "#1976D2", /* 파란색 */
     "Africa": "#303F9F",        /* 남색 */
     "Oceania": "#7B1FA2"        /* 보라색 */
 };
+// 이벤트 리스너 추가
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search");
+    const filterButtons = document.getElementById("filter-buttons");
+    const loadMoreButton = document.getElementById("load-more");
+
+    if (!searchInput || !filterButtons || !loadMoreButton) {
+        console.error("Required elements not found:", { searchInput, filterButtons, loadMoreButton });
+        return;
+    }
+
+    // JSON 파일 로드 후 초기화
+    loadCityInfo().then(() => {
+        // 검색
+        searchInput.addEventListener("input", () => {
+            const continent = document.querySelector(".filter-btn.active")?.dataset.continent || "";
+            filterClocks(continent);
+        });
+
+        // 필터 버튼
+        filterButtons.addEventListener("click", (event) => {
+            if (event.target.classList.contains("filter-btn")) {
+                document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+                event.target.classList.add("active");
+                const continent = event.target.dataset.continent;
+                filterClocks(continent);
+            }
+        });
+
+        // 더 보기 버튼
+        loadMoreButton.addEventListener("click", () => {
+            console.log("Load More clicked");
+            loadMoreClocks();
+        });
+
+        // 초기화 및 시간 업데이트
+        initializeClocks().then(() => {
+            console.log("Clocks initialized:", allClocks);
+            setInterval(() => {
+                allClocks.forEach(({ clock, city }) => {
+                    if (clock.style.display === "block") {
+                        updateClock(clock, city.offset, weatherCache.get(city.name));
+                    }
+                });
+            }, 1000);
+        }).catch(error => {
+            console.error("Error initializing clocks:", error);
+        });
+    });
+});
 
 const weatherCache = new Map();
 let allClocks = [];
@@ -582,7 +656,7 @@ async function loadMoreClocks() {
 }
 
 function createFilterButtons() {
-    const continents = ["", "Asia", "Europe", "North America", "South America", "Africa", "Oceania"];
+    const continents = ["", "Asia", "Europe", "N America", "S America", "Africa", "Oceania"];
     const filterContainer = document.getElementById("filter-buttons");
     continents.forEach(continent => {
         const button = document.createElement("button");

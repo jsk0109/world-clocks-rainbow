@@ -23,7 +23,7 @@ nav ul li a:hover {
 }
 .hero-section {
     text-align: center;
-    padding: 20px;
+    padding: 40px;
     margin-bottom: 20px;
 }
 .hero-section h1 {
@@ -34,7 +34,7 @@ nav ul li a:hover {
     line-height: 1.2;
 }
 .hero-section p {
-    font-size: 14px;
+    font-size: 20px;
     color: #777;
     margin-top: 2px;
 }

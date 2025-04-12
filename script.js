@@ -595,17 +595,18 @@ function getWeatherIcon(code) {
 }
 
 function createClock(city) {
+    console.log("Creating clock for:", city.name); // 디버깅 로그
     const container = document.createElement("div");
     container.className = "clock-container";
     container.dataset.city = city.name;
     container.dataset.continent = city.continent;
 
     const flag = document.createElement("img");
-    flag.src = `https://flagcdn.com/64x48/${city.flag}.png`; // 여기만 변경
+    flag.src = `https://flagcdn.com/64x48/${city.flag}.png`;
     flag.alt = `${city.name} flag`;
 
     const cityName = document.createElement("h2");
-    cityName.appendChild(flag); // 국기 → 도시 이름 순서 복원
+    cityName.appendChild(flag);
     cityName.append(` ${city.name}`);
 
     const time = document.createElement("div");
@@ -618,10 +619,35 @@ function createClock(city) {
     container.append(cityName, time, weatherInfo);
     document.getElementById("clocks-container").appendChild(container);
 
+    // 클릭 이벤트 추가
+    container.addEventListener('click', () => {
+        console.log("Clock card clicked:", city.name);
+        alert(`City: ${city.name}\nContinent: ${city.continent}\nLat: ${city.lat}, Lon: ${city.lon}\nOffset: ${city.offset} hours`);
+    });
+
     async function updateWeather() {
         const weather = await fetchWeather(city.lat, city.lon, city.name);
         weatherInfo.innerHTML = `Weather: ${getWeatherIcon(weather.code)} <span class="temp">${weather.temp}°C</span>, Humidity: <span class="humidity">${weather.humidity}%</span>`;
     }
+
+    function updateClock() {
+        console.log("Updating clock for:", city.name); // 디버깅 로그
+        const now = new Date();
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        const localTime = new Date(utc + city.offset * 3600000);
+        const hours = String(localTime.getHours()).padStart(2, "0");
+        const minutes = String(localTime.getMinutes()).padStart(2, "0");
+        const seconds = String(localTime.getSeconds()).padStart(2, "0");
+        time.innerHTML = `${hours}:${minutes}<span class="seconds">:${seconds}</span>`;
+    }
+
+    updateClock();
+    updateWeather();
+    setInterval(updateClock, 1000);
+    setInterval(updateWeather, 30 * 60 * 1000);
+
+    return { clock: container, updateWeather };
+}
 
     function updateClock() {
         const now = new Date();

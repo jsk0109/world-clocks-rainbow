@@ -468,25 +468,32 @@ const cities = [
     // Africa (234)
     { name: "Malabo", lat: 3.7504, lon: 8.7832, offset: 1, flag: "gq", continent: "Africa" }
 ];
-let cityInfo = {};
-
 async function loadCityInfo() {
     try {
-      const files = [
-    '/cities1.json',
-    '/cities2.json',
-    '/cities3.json',
-    '/cities4.json',
-    '/cities5.json'
-];
-
-        // 각 파일 로드
-        const responses = await Promise.all(files.map(file => fetch(file)));
-        const data = await Promise.all(responses.map(res => res.json()));
-
-        // 데이터 병합
+        const files = [
+            '/cities1.json',
+            '/cities2.json',
+            '/cities3.json',
+            '/cities4.json',
+            '/cities5.json'
+        ];
+        console.log("Loading JSON files:", files);
+        const responses = await Promise.all(files.map(async (file, index) => {
+            const res = await fetch(file);
+            if (!res.ok) throw new Error(`Failed to fetch ${file}: ${res.status}`);
+            return { response: res, fileIndex: index };
+        }));
+        const data = await Promise.all(responses.map(async ({ response, fileIndex }) => {
+            try {
+                return await response.json();
+            } catch (error) {
+                throw new Error(`JSON parse error in ${files[fileIndex]}: ${error.message}`);
+            }
+        }));
         cityInfo = Object.assign({}, ...data);
         console.log("City info loaded:", cityInfo);
+        window.cities = Object.values(cityInfo); // cities 배열 생성
+        console.log("Cities array:", window.cities);
     } catch (error) {
         console.error("Error loading city info:", error);
     }

@@ -490,10 +490,16 @@ async function loadCityInfo() {
                 throw new Error(`JSON parse error in ${files[fileIndex]}: ${error.message}`);
             }
         }));
-        cityInfo = Object.assign({}, ...data);
-        console.log("City info loaded:", cityInfo);
-        window.cities = Object.values(cityInfo); // cities 배열 생성
-        console.log("Cities array:", window.cities);
+        // 하드코딩 데이터
+        const hardcodedData = {
+            "venice": { "name": "Venice", "lat": 45.4408, "lon": 12.3155, "offset": 2, "continent": "Europe", "flag": "it" },
+            "malabo": { "name": "Malabo", "lat": 3.7504, "lon": 8.7832, "offset": 1, "continent": "Africa", "flag": "gq" }
+        };
+        cityInfo = Object.assign({}, ...data, hardcodedData);
+        console.log("City info loaded:", Object.keys(cityInfo).length);
+        window.cities = Object.values(cityInfo);
+        console.log("Cities array:", window.cities.length);
+        console.log("Sample city:", window.cities[0]);
     } catch (error) {
         console.error("Error loading city info:", error);
     }
@@ -595,7 +601,13 @@ function getWeatherIcon(code) {
 }
 
 function createClock(city) {
-    console.log("Creating clock for:", city.name); // 디버깅 로그
+    console.log("Creating clock for:", city); // city 전체 로그
+    if (!city || !city.name || !city.flag || !city.continent) {
+        console.error("Invalid city data:", city);
+        return null; // 잘못된 데이터면 카드 안 만듦
+    }
+    const container = document.createElement("div");
+    // ... 나머지 코드 그대로 ...
     const container = document.createElement("div");
     container.className = "clock-container";
     container.dataset.city = city.name;
@@ -626,30 +638,17 @@ function createClock(city) {
     });
 
     async function updateWeather() {
+    try {
         const weather = await fetchWeather(city.lat, city.lon, city.name);
         weatherInfo.innerHTML = `Weather: ${getWeatherIcon(weather.code)} <span class="temp">${weather.temp}°C</span>, Humidity: <span class="humidity">${weather.humidity}%</span>`;
+    } catch (error) {
+        console.error("Weather failed for", city.name, error);
+        weatherInfo.innerHTML = "Weather: N/A";
     }
-
-    function updateClock() {
-        console.log("Updating clock for:", city.name); // 디버깅 로그
-        const now = new Date();
-        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-        const localTime = new Date(utc + city.offset * 3600000);
-        const hours = String(localTime.getHours()).padStart(2, "0");
-        const minutes = String(localTime.getMinutes()).padStart(2, "0");
-        const seconds = String(localTime.getSeconds()).padStart(2, "0");
-        time.innerHTML = `${hours}:${minutes}<span class="seconds">:${seconds}</span>`;
-    }
-
-    updateClock();
-    updateWeather();
-    setInterval(updateClock, 1000);
-    setInterval(updateWeather, 30 * 60 * 1000);
-
-    return { clock: container, updateWeather };
 }
 
     function updateClock() {
+        console.log("Updating clock for:", city.name); // 디버깅 로그
         const now = new Date();
         const utc = now.getTime() + now.getTimezoneOffset() * 60000;
         const localTime = new Date(utc + city.offset * 3600000);
@@ -729,5 +728,5 @@ document.addEventListener("DOMContentLoaded", () => {
     createFilterButtons();
     setupSearch();
     initializeClocks();
-    document.getElementById("load-more").addEventListener("click", loadMoreClocks);
+    document.getElementById("clocks-container").appendChild(container); 바로 아래에 위 로그 추가.
 });

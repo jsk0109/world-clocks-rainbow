@@ -521,7 +521,7 @@ function createClock(city) {
     container.dataset.continent = city.continent;
 
     const flag = document.createElement("img");
-    flag.src = `https://flagcdn.com/16x12/${city.flag}.png`;
+    flag.src = `https://flagcdn.com/64x48/${city.flag}.png`; // 여기만 변경
     flag.alt = `${city.name} flag`;
 
     const cityName = document.createElement("h2");

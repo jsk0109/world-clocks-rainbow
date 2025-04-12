@@ -472,14 +472,13 @@ let cityInfo = {};
 
 async function loadCityInfo() {
     try {
-        // 5개 JSON 파일 경로
-        const files = [
-            '/data/public/data/cities1.json',
-            '/data/public/data/cities2.json',
-            '/data/public/data/cities3.json',
-            '/data/public/data/cities4.json',
-            '/data/public/data/cities5.json'
-        ];
+      const files = [
+    '/cities1.json',
+    '/cities2.json',
+    '/cities3.json',
+    '/cities4.json',
+    '/cities5.json'
+];
 
         // 각 파일 로드
         const responses = await Promise.all(files.map(file => fetch(file)));

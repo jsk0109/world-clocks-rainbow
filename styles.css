@@ -1,0 +1,196 @@
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #000;
+    margin: 0;
+}
+nav ul li {
+    flex: 1 1 14.28%;
+    text-align: center;
+}
+nav ul li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+nav ul li a:hover {
+    background-color: #333;
+}
+.hero-section {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.hero-section h1 {
+    font-size: 40px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.2;
+}
+.hero-section p {
+    font-size: 14px;
+    color: #777;
+    margin-top: 2px;
+}
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 28px;
+    }
+    .hero-section p {
+        font-size: 12px;
+    }
+}
+#search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+#search {
+    padding: 10px;
+    width: 300px;
+    max-width: 90%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+.filter-btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+/* 대륙별 색상 */
+.filter-btn.active {
+    transform: scale(1.1); /* 10% 확대 */
+    transition: transform 0.3s; /* 부드럽게 변화 */
+}
+.filter-btn.active[data-continent=""] {
+    background-color: #D32F2F; /* 빨간색 (All) */
+    color: white;
+}
+.filter-btn.active[data-continent="Asia"] {
+    background-color: #F57C00; /* 주황색 */
+    color: white;
+}
+.filter-btn.active[data-continent="Europe"] {
+    background-color: #FBC02D; /* 노란색 */
+    color: white;
+}
+.filter-btn.active[data-continent="North America"] {
+    background-color: #388E3C; /* 초록색 */
+    color: white;
+}
+.filter-btn.active[data-continent="South America"] {
+    background-color: #1976D2; /* 파란색 */
+    color: white;
+}
+.filter-btn.active[data-continent="Africa"] {
+    background-color: #303F9F; /* 남색 */
+    color: white;
+}
+.filter-btn.active[data-continent="Oceania"] {
+    background-color: #7B1FA2; /* 보라색 */
+    color: white;
+}
+#clocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+.clock-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+.clock-container:hover {
+    transform: scale(1.5);
+}
+.clock-container img {
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.clock-container h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.clock-time {
+    font-size: 24px;
+    font-weight: bold;
+}
+.clock-time .seconds {
+    font-size: 16px;
+    opacity: 0.6;
+}
+.weather-info {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.weather-info .temp {
+    color: #D32F2F; /* 진한 빨강 복원 */
+}
+.weather-info .humidity {
+    color: #0288D1; /* 진한 파랑 복원 */
+}
+#load-more {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF; /* 파란색 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#load-more:hover {
+    background-color: #0056D2; /* hover 시 더 어두운 파란색 */
+}
+#load-more:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+@media (max-width: 768px) {
+    nav ul li {
+        flex: 1 1 33.33%;
+    }
+    .clock-container {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+@media (max-width: 480px) {
+    nav ul li {
+        flex: 1 1 50%;
+    }
+    .hero-section h1 {
+        font-size: 24px;
+    }
+    .hero-section p {
+        font-size: 14px;
+    }
+    #search {
+        width: 100%;
+    }
+}
